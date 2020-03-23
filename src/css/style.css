@@ -59,7 +59,8 @@ input.mainScreen__YourChatName {
 
     .outputMessage {
         align-self: flex-end;
-        
+        margin-left: 8px;
+        margin-right: 8px;
     }
 
         .outputMessage__name {

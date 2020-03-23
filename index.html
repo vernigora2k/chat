@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/css/normalize.css">
+    <link rel="stylesheet" href="./src/css/fonts/roboto-regular.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+    <div class="mainScreen">
+        <input class="mainScreen__YourChatName" type="text" value="Your chat name">
+        <div class="mainScreen__chat flex">
+            <div class="inputMessage">
+                <p class="inputMessage__name">Bot:</p>
+                <p class="inputMessage__text">Привет! Это первое сообщение.</p>
+            </div>
+            <div class="inputMessage">
+                <p class="inputMessage__name">Bot: </p>
+                <p class="inputMessage__text">     
+                    А это второе и, кажется, оно очень 
+                    длинное, чтобы поместиться на 
+                    одной строке
+                </p>
+            </div>
+            <div class="outputMessage">
+                <p class="outputMessage__name">Имя: </p>
+                <p class="outputMessage__text">Добрый день!</p>
+            </div>
+        </div>
+        <div class="mainScreen__messageArea flex">
+            <input class="messageInput" value="message..">
+
+            <button class="send">send</button>
+        </div>
+    
+    <script type="module" src="/js/index.js"></script>
+</body>
+</html>

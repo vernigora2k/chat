@@ -38,6 +38,7 @@ input.mainScreen__YourChatName {
 .mainScreen__chat {
     flex-direction: column;
     justify-content: flex-end;
+    flex-wrap: nowrap;
     width: 304px;
     height: 437px;
     margin: 8px;
@@ -47,23 +48,22 @@ input.mainScreen__YourChatName {
     .inputMessage {
         margin-left: 8px;
         margin-right: 8px;
-        margin-top: -17px;
     }
 
         .inputMessage__text {
-
+            margin-top: 8px;
+            margin-bottom: 8px;
         }
 
     .outputMessage {
         align-self: flex-end;
         margin-left: 8px;
         margin-right: 8px;
-        margin-top: -17px;
     }
 
-
         .outputMessage__text {
-
+            margin-top: 8px;
+            margin-bottom: 8px;
         }
 
 .mainScreen__messageArea {

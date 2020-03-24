@@ -43,6 +43,7 @@ input.mainScreen__YourChatName {
     height: 437px;
     margin: 8px;
     border: 1px solid #000000;
+    contain: paint; 
 }
 
     .inputMessage {
@@ -50,7 +51,7 @@ input.mainScreen__YourChatName {
         margin-right: 8px;
     }
 
-        .inputMessage__text {
+        .message__text {
             margin-top: 8px;
             margin-bottom: 8px;
         }
@@ -59,9 +60,10 @@ input.mainScreen__YourChatName {
         align-self: flex-end;
         margin-left: 8px;
         margin-right: 8px;
+        text-align: right;
     }
 
-        .outputMessage__text {
+        .message__text {
             margin-top: 8px;
             margin-bottom: 8px;
         }

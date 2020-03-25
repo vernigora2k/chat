@@ -1,8 +1,18 @@
-let buttonSend = document.querySelector('.send');
-buttonSend.onclick = function () {
-    createNewMessage(false);
+import {} from './controller.js';
+{
+let buttonSend = document.querySelector('.send'); //отправка сообщения при нажатии кнопки send
+buttonSend.addEventListener('click', function () {
+    createNewMessage(true)
+})
 }
 
+{let inputGetMessage = document.querySelector('.messageInput'); //отправка сообщения при нажатии клавиши Enter
+inputGetMessage.addEventListener('keydown', function () {
+    if (event.code == 'Enter') {
+        createNewMessage(true)
+    }
+})
+}
 
 function createNewMessage (isInput) {
     let chat = document.querySelector('.mainScreen__chat');

@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="mainScreen">
-        <input class="mainScreen__YourChatName" type="text" value="Your chat name">
+        <input class="mainScreen__YourChatName" type="text" value="Your chat name" onfocus="value = ''">
         <div class="mainScreen__chat flex">
             <div class="inputMessage">
                 <p class="message__text">Bot: &nbsp; <br>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="mainScreen__messageArea flex">
-            <input class="messageInput" value="message..">
+            <input class="messageInput" value="message.." onfocus="value = ''">
             <button class="send">send</button>
         </div>
     <script type="module" src="/js/index.js"></script>

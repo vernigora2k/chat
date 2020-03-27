@@ -1,39 +1,33 @@
 import {} from './controller.js';
-{
-let buttonSend = document.querySelector('.send'); //отправка сообщения при нажатии кнопки send
-buttonSend.addEventListener('click', function () {
-    createNewMessage(true)
-})
-}
+import {} from './chatView.js';
 
-{let inputGetMessage = document.querySelector('.messageInput'); //отправка сообщения при нажатии клавиши Enter
-inputGetMessage.addEventListener('keydown', function () {
-    if (event.code == 'Enter') {
-        createNewMessage(true)
-    }
-})
-}
+// {
+// let buttonSend = document.querySelector('.send'); //отправка сообщения при нажатии кнопки send
+// buttonSend.addEventListener('click', function () {
+//     createNewMessage(true)
+// })
+// }
 
-function createNewMessage (isInput) {
-    let chat = document.querySelector('.mainScreen__chat');
-    let newMessage = document.createElement('div');
-    let getNameOfSender = document.querySelector('.mainScreen__YourChatName');
-    let getMessage = document.querySelector('.messageInput');
+// function createNewMessage (isInput) {
+//     let chat = document.querySelector('.mainScreen__chat');
+//     let newMessage = document.createElement('div');
+//     let getNameOfSender = document.querySelector('.mainScreen__YourChatName');
+//     let getMessage = document.querySelector('.messageInput');
 
-    if (isInput) { 
-        newMessage.classList.add('inputMessage'); 
-    } else {
-        newMessage.classList.add('outputMessage');
-    }
-    if (getMessage.value.length > 15) {
-        getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
+//     if (isInput) { 
+//         newMessage.classList.add('inputMessage'); 
+//     } else {
+//         newMessage.classList.add('outputMessage');
+//     }
+//     if (getMessage.value.length > 15) {
+//         getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
     
-    newMessage.innerHTML = '<p class="message__text">'+
-                            getNameOfSender.value + ':  ' +
-                            getMessage.value + '</p>';
-    chat.append(newMessage);
-    getMessage.value = '';
-}
+//     newMessage.innerHTML = '<p class="message__text">'+
+//                             getNameOfSender.value + ':  ' +
+//                             getMessage.value + '</p>';
+//     chat.append(newMessage);
+//     getMessage.value = '';
+// }
 
  
 

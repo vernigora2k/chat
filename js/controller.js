@@ -1,5 +1,5 @@
-let event = new Event ();
+// let event = new Event ();
 
-function messageSend () {
+// function messageSend () {
 
-}
+// }

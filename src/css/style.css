@@ -73,17 +73,21 @@ input.mainScreen__YourChatName {
     justify-content: space-between;
 }
 
-    input.messageInput {
-        width: 245px;
-        height: 32px;
-        padding-left: 8px;
-        border: 1px solid #000000;
-        color: #7C7C7C;
+    form.flex {
+        justify-content: space-between;
     }
 
-    button.send {
-        width: 51px;
-        height: 32px;
-        border: 1px solid #000000;
-        background-color: #ffffff;
-    }
+        input.messageInput {
+            width: 245px;
+            height: 32px;
+            padding-left: 8px;
+            border: 1px solid #000000;
+            color: #7C7C7C;
+        }
+
+        input.send {
+            width: 51px;
+            height: 32px;
+            border: 1px solid #000000;
+            background-color: #ffffff;
+        }

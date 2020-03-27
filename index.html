@@ -29,9 +29,11 @@
                 <p class="message__text">Имя:	&nbsp;Добрый день!</p>
             </div>
         </div>
-        <div class="mainScreen__messageArea flex">
-            <input class="messageInput" value="message.." onfocus="value = ''">
-            <button class="send">send</button>
+        <div class="mainScreen__messageArea">
+            <form class="flex" action="#">   
+                <input class="messageInput" type="text" value="message.." onfocus="value = ''">
+                <input class="send" type="submit" value="send"></input>
+            </form>
         </div>
     <script type="module" src="/js/index.js"></script>
 </body>

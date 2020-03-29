@@ -1,14 +1,12 @@
+import {buttonSend, chat, getNameOfSender, getMessage} from './UiElements.js';
+
 {
-let buttonSend = document.querySelector('.send'); //отправка сообщения при нажатии кнопки send
 buttonSend.addEventListener('click', function () {
         createNewMessage(true)})
 }
     
 function createNewMessage (isInput) {
-    let chat = document.querySelector('.mainScreen__chat');
     let newMessage = document.createElement('div');
-    let getNameOfSender = document.querySelector('.mainScreen__YourChatName');
-    let getMessage = document.querySelector('.messageInput');
     
     if (isInput) { 
         newMessage.classList.add('inputMessage'); 

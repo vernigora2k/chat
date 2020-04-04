@@ -3,7 +3,7 @@
 
 // }
 
-socket.on('chat message', function(msg){
+socket.on('message', function(msg){
     console.log('message: ' + msg);
 });
 

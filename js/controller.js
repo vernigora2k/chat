@@ -8,7 +8,6 @@ socket.on('message', function(msg){
 });
 
 $(function () {
-    var socket = io();
     $('form').submit(function(e){
       e.preventDefault(); 
       socket.emit('message', getMessage.val());

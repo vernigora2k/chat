@@ -1,19 +1,18 @@
- let evt = new Event ('newMessage');
 
 // function messageSend () {
 
 // }
 
-socket.on.dispatchEvent(evt);
+socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+});
 
-socket.on('message').addEventListener () {
-    () => {
-        console.log('');
-    }
-}
-
-// io.on('connection', function(socket){
-//     socket.on('chat message', function(msg){
-//       console.log('message: ' + msg);
-//     });
-//   });
+$(function () {
+    var socket = io();
+    $('form').submit(function(e){
+      e.preventDefault(); 
+      socket.emit('chat message', getMessage.val());
+      getMessage.val('');
+      return false;
+    });
+  });

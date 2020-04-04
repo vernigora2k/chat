@@ -11,7 +11,7 @@ $(function () {
     var socket = io();
     $('form').submit(function(e){
       e.preventDefault(); 
-      socket.emit('chat message', getMessage.val());
+      socket.emit('message', getMessage.val());
       getMessage.val('');
       return false;
     });

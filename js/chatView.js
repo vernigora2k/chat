@@ -7,6 +7,7 @@ buttonSend.addEventListener('click', function () {
     
 function createNewMessage (isInput) {
     let newMessage = document.createElement('div');
+    let date = new Date();
     
     if (isInput) { 
         newMessage.classList.add('inputMessage'); 
@@ -17,8 +18,11 @@ function createNewMessage (isInput) {
         getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
         
     newMessage.innerHTML = '<p class="message__text">'+
-                                getNameOfSender.value + ':  ' +
-                                getMessage.value + '</p>';
+                            getNameOfSender.value + ':  ' +
+                            getMessage.value + '</p>' +
+                            '<p class="dateOnMessage">' + 
+                            date.toTimeString().slice(0,5) +
+                            '</p>';
     chat.append(newMessage);
     getMessage.value = '';
 }

@@ -49,24 +49,47 @@ input.mainScreen__YourChatName {
     .inputMessage {
         margin-left: 8px;
         margin-right: 8px;
+        margin-bottom: 8px;
+        padding-right: 8px;
+        background-color: #f7f7f7;
+        align-self: flex-start;
     }
 
         .message__text {
             margin-top: 8px;
             margin-bottom: 8px;
+            margin-left: 8px;
+            margin-right: 8px;
         }
 
     .outputMessage {
         align-self: flex-end;
         margin-left: 8px;
         margin-right: 8px;
+        margin-bottom: 8px;
         text-align: right;
+        background-color: #f7f7f7;
     }
 
         .message__text {
             margin-top: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
+            margin-left: 8px;
+            margin-right: 8px;
         }
+
+    .dateOnMessage {
+        margin-top: 0px;
+        padding-top: 0px;
+        margin-bottom: 5px;
+        text-align: right;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        color: #333333;
+        
+    }
 
 .mainScreen__messageArea {
     margin: 8px;

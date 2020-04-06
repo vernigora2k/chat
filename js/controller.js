@@ -1,11 +1,12 @@
 import {socket} from './client.js';
+import {sendForm} from './UiElements.js';
 
 socket.on('message', function(msg){
     console.log('message: ' + msg);
 });
 
 function messageSend () {
-    $('form').submit(function(e){
+    sendForm.submit(function(e){
       e.preventDefault(); 
       socket.emit('message', getMessage.val());
       getMessage.val('');

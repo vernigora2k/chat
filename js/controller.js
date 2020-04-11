@@ -6,5 +6,5 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    createNewMessage(msg);
+    createNewMessage(msg, true);
 });

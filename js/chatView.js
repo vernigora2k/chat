@@ -7,7 +7,8 @@ buttonSend.addEventListener('click', () => {
             message: getMessage.value
         }
         sendMessage(msg);
-})
+        createNewMessage(msg, false)
+;})
     
 export function createNewMessage (msg, isInput) {
     let newMessage = document.createElement('div');

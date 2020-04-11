@@ -1,11 +1,15 @@
 import {buttonSend, chat, getNameOfSender, getMessage} from './UiElements.js';
+import {sendMessage} from './controller.js';
 
-{
-buttonSend.addEventListener('click', function () {
-        createNewMessage(true)})
-}
+buttonSend.addEventListener('click', () => {
+        const msg = {
+            user: getNameOfSender.value,
+            message: getMessage.value
+        }
+        sendMessage(msg);
+})
     
-function createNewMessage (isInput) {
+export function createNewMessage (msg, isInput) {
     let newMessage = document.createElement('div');
     let date = new Date();
     
@@ -18,12 +22,11 @@ function createNewMessage (isInput) {
         getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
         
     newMessage.innerHTML = '<p class="message__text">'+
-                            getNameOfSender.value + ':  ' +
-                            getMessage.value + '</p>' +
-                            '<p class="dateOnMessage">' + 
-                            date.toTimeString().slice(0,5) +
-                            '</p>';
+        msg.user + ':  ' +
+        msg.message + '</p>' +
+        '<p class="dateOnMessage">' + 
+        date.toTimeString().slice(0,5) +
+        '</p>';
     chat.append(newMessage);
     getMessage.value = '';
 }
-    

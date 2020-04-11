@@ -1,15 +1,10 @@
 import {socket} from './client.js';
-import {sendForm} from './UiElements.js';
+import {createNewMessage} from './chatView.js'
+
+export function sendMessage(msg) {
+    socket.emit('message', msg);
+}
 
 socket.on('message', function(msg){
-    console.log('message: ' + msg);
+    createNewMessage(msg);
 });
-
-function messageSend () {
-    sendForm.submit(function(e){
-      e.preventDefault(); 
-      socket.emit('message', getMessage.val());
-      getMessage.val('');
-      return false;
-    });
-  };

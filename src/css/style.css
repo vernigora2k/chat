@@ -133,7 +133,7 @@ body {
             background-color: #ffffff;
         }
 
-
+/* popupCreateAccount  */
 .popupCreateAccount {
     display: none;
     width: 321px;
@@ -227,4 +227,104 @@ body {
                 .popupFooterCreate>p {
                     margin: 0px;
                     padding: 0px;
+                }
+
+
+/* popupAutorizationBlock  */
+.popupAutorizationBlock {
+    width: 321px;
+    min-height: 533px;
+    background-color: #535353;
+    position: fixed;
+    overflow: hidden;
+    top: 0px;
+}
+    .popupAutorization__content {
+        height: 319px;
+        width: 273px;
+        background-color: white;
+        margin-left: 24px;
+        margin-top: 106px;
+        
+    }
+
+        .popupAutorization__content>div {
+            display: flex;
+            justify-content: space-between;
+            width: 246px;
+            margin-left: 14px;
+            margin-top: 16px;
+        }
+
+            .popupHeaderAutorization {
+            }
+                .popupHeaderAutorization>p {
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+            .crossClose {   
+            }    
+
+                .crossClose>p {
+                    width: 14px;
+                    height: 20.82px;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 24px;
+                    line-height: 70%;
+                    color: #000000;
+                    opacity: 0.45;
+                    transform: rotate(-45deg);
+                    margin: 0px;
+                }
+
+            .popupAutorization {
+                margin-left: 14px;
+                margin-top: 40px;
+                margin-bottom: 30px;
+            }
+
+                .loginLabel {
+                }
+
+                .loginInput {
+                    width: 245px;
+                    height: 32px;
+                    margin-top: 8px;
+                    margin-bottom: 8px;
+                    border: 1px solid #000000;
+                }
+
+                .passwordLabel {
+                }
+
+                .passwordInput {
+                    width: 245px;
+                    height: 32px;
+                    margin-top: 8px;
+                    border: 1px solid #000000;
+                }
+
+                .entryAccountBtn {
+                    width: 62px;
+                    height: 32px;
+                    background: #FFFFFF;
+                    margin-top: 8px;
+                    border: 1px solid #000000;
+                }
+
+            .popupFooterRegistration {
+                margin-left: 14px;
+                margin-bottom: 17px;
+                width: 246px;
+                
+            }
+                
+                .popupFooterRegistration>p {
+                    margin: 0px;
+                    padding: 0px;
+                    margin-left: auto;
+                    margin-right: auto;
                 }

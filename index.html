@@ -11,7 +11,13 @@
 </head>
 <body>
     <div class="mainScreen">
-        <input class="mainScreen__YourChatName" type="text" value="Your chat name" onfocus="value = ''">
+        <!-- <input class="mainScreen__YourChatName" type="text" value="Your chat name" onfocus="value = ''"> -->
+        <div class="mainScreen__settingsArea"> 
+            <form class="settingsForm flex" action="#">
+                <input class="settings" type="submit" value="Настройки">
+                <input class="entry" type="submit" value="Выйти">
+            </form>
+        </div> 
         <div class="mainScreen__chat flex">
             <div class="inputMessage">
                 <p class="message__text">Bot: &nbsp; <br>
@@ -35,7 +41,7 @@
         <div class="mainScreen__messageArea">
             <form class="sendForm flex" action="#">   
                 <input class="messageInput" type="text" value="message.." onfocus="value = ''">
-                <input class="send" type="submit" value="send"></input>
+                <input class="send" type="submit" value="->"></input>
             </form>
         </div>
     </div>

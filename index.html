@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
+    
     <div class="mainScreen">
         <!-- <input class="mainScreen__YourChatName" type="text" value="Your chat name" onfocus="value = ''"> -->
         <div class="mainScreen__settingsArea"> 
@@ -43,6 +44,29 @@
                 <input class="messageInput" type="text" value="message.." onfocus="value = ''">
                 <input class="send" type="submit" value="->"></input>
             </form>
+        </div>
+    </div>
+
+    <div class="popupCreateAccount">
+        <div class="popupCreateAccount__content flex">
+            <div>
+                <div class="popupHeaderCreate">
+                    <p>Создать аккаунт</p>
+                </div>
+                <div class="crossClose">
+                    <p>+</p>
+                </div>
+            </div>
+            <form action="#" class="popupAutorization">
+                <label class="loginLabel" for="loginInput">Имя (логин)</label>
+                <input class="loginInput" id="loginInput" type="text" >
+                <label class="passwordLabel" for="passwordInput" for="">Пароль</label>
+                <input class="passwordInput" id="passwordInput" type="text" >
+                <input class="createAccountBtn" type="submit" value="Создать">
+            </form>
+            <div class="popupFooterCreate">
+                <p>У меня уже есть аккаунт (войти)</p>
+            </div>
         </div>
     </div>
     <script type="module" src="js/index.js"></script>

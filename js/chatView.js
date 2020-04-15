@@ -1,13 +1,16 @@
 import {buttonSend, chat, getNameOfSender, getMessage} from './UiElements.js';
 import {sendMessage} from './controller.js';
+import {isValid} from './validation.js';
 
 buttonSend.addEventListener('click', () => {
-        const msg = {
+            const msg = {
             user: getNameOfSender.value,
             message: getMessage.value
         }
-        sendMessage(msg);
-        createNewMessage(msg, false)
+        if (isValid(msg)) {
+            sendMessage(msg);
+            createNewMessage(msg, false)
+        }
 ;})
     
 export function createNewMessage (msg, isInput) {

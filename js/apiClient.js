@@ -1,7 +1,7 @@
 import { URL } from "./config.js";
 import { isNameValid, isPasswordValid } from "./validation.js";
 
-function apiRequest(url, config) {
+export function apiRequest(url, config) {
     fetch(URL + url, config)
         .then(dataFromServer => dataFromServer.json())
         .catch(err => console.log("Ошибка!", err))

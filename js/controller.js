@@ -1,7 +1,7 @@
 import {socket} from './client.js';
 import {createNewMessage} from './chatView.js';
 import {apiRequest} from './apiClient.js';
-import {popupCreateAccount, popupAutorizationBlock} from './UiElements';
+import {popupCreateAccount, popupAutorizationBlock} from './UiElements.js';
 
 export function sendMessage(msg) {
     socket.emit('message', msg);
@@ -33,14 +33,7 @@ export function autorization(username, password) {
         
 }
 
-//document.cookie = "cookieUserToken=SomeToken"
-
-(function isAutorized(){
-    if (getCookie(cookieUserToken)) {
-        popupCreateAccount.classList.add('dispNone')
-        popupAutorizationBlock.classList.add('dispNone')
-    }
-}())
+document.cookie = "cookieUserToken=SomeToken";
 
 function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
@@ -48,3 +41,11 @@ function getCookie(name) {
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
   }
+
+  (function isAutorized(){
+    if (getCookie(cookieUserToken)) {
+        popupCreateAccount.classList.add('dispNone')
+        popupAutorizationBlock.classList.add('dispNone')
+    }
+}())
+

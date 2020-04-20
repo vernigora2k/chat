@@ -26,7 +26,8 @@ export function autorization(username, password) {
     }
 
     apiRequest(ulr, config)
-        .then()
+        .then(data => document.cookie = 'cookieUserToken=' + encodeURIComponent(data)) +
+              '; path=/; max-age=100000'
         .catch(error => alert(error));
-        )
+        
 }

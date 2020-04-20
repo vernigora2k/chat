@@ -33,12 +33,12 @@ export function autorization(username, password) {
         
 }
 
-(function isAutorized(){
+const isAutorized = new function(){
     if (Cookies.get('cookieUserToken')) {
         popupCreateAccount.classList.add('dispNone')
         popupAutorizationBlock.classList.add('dispNone')
     }
-}())
+}
 //document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
 //document.cookie = "cookieUserToken=SomeToken";
 

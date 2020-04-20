@@ -1,7 +1,7 @@
 import {socket} from './client.js';
 import {createNewMessage} from './chatView.js';
 import {apiRequest} from './apiClient.js';
-import {popupCreateAccount, popupAutorizationBlock} from './UiElements.js';
+import {popupCreateAccount, popupAutorizationBlock, logoutBtn} from './UiElements.js';
 
 export function sendMessage(msg) {
     socket.emit('message', msg);
@@ -39,8 +39,11 @@ export function autorization(username, password) {
         popupAutorizationBlock.classList.add('dispNone')
     }
 }())
-
 //document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
 //document.cookie = "cookieUserToken=SomeToken";
 
+logoutBtn.addEventListener('click', () => {
+    Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })
+    popupAutorizationBlock.classList.remove('dispNone')
+})
 

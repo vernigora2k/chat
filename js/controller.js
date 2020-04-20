@@ -33,19 +33,14 @@ export function autorization(username, password) {
         
 }
 
-document.cookie = "cookieUserToken=SomeToken";
-
-function getCookie(name) {
-    let matches = document.cookie.match(new RegExp(
-      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
-
-  (function isAutorized(){
-    if (getCookie(cookieUserToken)) {
+(function isAutorized(){
+    if (Cookies.get('cookieUserToken')) {
         popupCreateAccount.classList.add('dispNone')
         popupAutorizationBlock.classList.add('dispNone')
     }
 }())
+
+//document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
+//document.cookie = "cookieUserToken=SomeToken";
+
 

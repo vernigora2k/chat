@@ -25,6 +25,10 @@ body {
     flex-wrap: wrap;
 }
 
+.dispNone {
+    display: none;
+}
+
 /* input.mainScreen__YourChatName {
     width: 304px;
     height: 32px;
@@ -135,7 +139,6 @@ body {
 
 /* popupCreateAccount  */
 .popupCreateAccount {
-    display: none;
     width: 321px;
     min-height: 533px;
     background-color: #535353;
@@ -232,7 +235,6 @@ body {
 
 /* popupAutorizationBlock  */
 .popupAutorizationBlock {
-    display: none;
     width: 321px;
     min-height: 533px;
     background-color: #535353;

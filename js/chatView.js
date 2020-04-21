@@ -13,48 +13,24 @@ buttonSend.addEventListener('click', () => {
         }
 ;})
 
-class NewMessage {
-      constructor (msg, isInput) {
-        let newMessage = document.createElement('div');
-        let date = new Date();
-        
-        if (isInput) { 
-            newMessage.classList.add('inputMessage'); 
-        } else {
-            newMessage.classList.add('outputMessage');
-        }
-        if (getMessage.value.length > 15) {
-            getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
-            
-        newMessage.innerHTML = '<p class="message__text">'+
-            msg.user + ':  ' +
-            msg.message + '</p>' +
-            '<p class="dateOnMessage">' + 
-            date.toTimeString().slice(0,5) +
-            '</p>';
-        chat.append(newMessage);
-        getMessage.value = '';
-    }
-}
-
-// export function createNewMessage (msg, isInput) {
-//     let newMessage = document.createElement('div');
-//     let date = new Date();
+export function createNewMessage (msg, isInput) {
+    let newMessage = document.createElement('div');
+    let date = new Date();
     
-//     if (isInput) { 
-//         newMessage.classList.add('inputMessage'); 
-//     } else {
-//         newMessage.classList.add('outputMessage');
-//     }
-//     if (getMessage.value.length > 15) {
-//         getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
+    if (isInput) { 
+        newMessage.classList.add('inputMessage'); 
+    } else {
+        newMessage.classList.add('outputMessage');
+    }
+    if (getMessage.value.length > 15) {
+        getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
         
-//     newMessage.innerHTML = '<p class="message__text">'+
-//         msg.user + ':  ' +
-//         msg.message + '</p>' +
-//         '<p class="dateOnMessage">' + 
-//         date.toTimeString().slice(0,5) +
-//         '</p>';
-//     chat.append(newMessage);
-//     getMessage.value = '';
-// }
+    newMessage.innerHTML = '<p class="message__text">'+
+        msg.user + ':  ' +
+        msg.message + '</p>' +
+        '<p class="dateOnMessage">' + 
+        date.toTimeString().slice(0,5) +
+        '</p>';
+    chat.append(newMessage);
+    getMessage.value = '';
+}

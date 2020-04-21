@@ -335,7 +335,6 @@ body {
 
 /* popupSettings  */
 .popupSettings {
-    display: none;
     width: 321px;
     min-height: 533px;
     background-color: #535353;

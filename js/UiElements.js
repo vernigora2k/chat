@@ -6,3 +6,5 @@ export const sendForm = document.querySelector('.sendForm');
 export const popupCreateAccount = document.querySelector('.popupCreateAccount');
 export const popupAutorizationBlock = document.querySelector('.popupAutorizationBlock');
 export const logoutBtn = document.querySelector('.logout');
+export const settingsBtn = document.querySelector('.settings');
+export const popupSettings = document.querySelector('.popupSettings');

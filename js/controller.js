@@ -12,6 +12,25 @@ socket.on('message', function(msg){
     createNewMessage(msg, true);
 });
 
+const isAutorized = new function(){
+    if (Cookies.get('cookieUserToken')) {
+        popupCreateAccount.classList.add('dispNone')
+        popupAutorizationBlock.classList.add('dispNone')
+    }
+}
+//document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
+//document.cookie = "cookieUserToken=SomeToken";
+
+logoutBtn.addEventListener('click', () => {
+    Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })
+    popupAutorizationBlock.classList.remove('dispNone')
+    document.location.reload(true)
+})
+
+settingsBtn.addEventListener('click', () => {
+    popupSettings.classList.remove('dispNone')
+})
+
 export function autorization(username, password) {
     const url = 'api/user/auth'
     const payload = {
@@ -34,20 +53,21 @@ export function autorization(username, password) {
         
 }
 
-const isAutorized = new function(){
-    if (Cookies.get('cookieUserToken')) {
-        popupCreateAccount.classList.add('dispNone')
-        popupAutorizationBlock.classList.add('dispNone')
+export function changeChatName(newChatName) {
+    const url = 'api/user'
+    const payload = {
+        chatname: newChatName,
     }
+    const config = {
+        method: 'PATCH',
+        headers: {
+            'Authorization': 'Bearer token'
+        },
+        body: JSON.stringify(payload)
+    }
+
+    apiRequest(ulr, config)
+        .then(data => console.log(data))
+        .catch(error => alert(error));
+        
 }
-//document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
-//document.cookie = "cookieUserToken=SomeToken";
-
-logoutBtn.addEventListener('click', () => {
-    Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })
-    popupAutorizationBlock.classList.remove('dispNone')
-})
-
-settingsBtn.addEventListener('click', () => {
-    popupSettings.classList.remove('dispNone')
-})

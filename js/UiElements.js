@@ -8,3 +8,5 @@ export const popupAutorizationBlock = document.querySelector('.popupAutorization
 export const logoutBtn = document.querySelector('.logout');
 export const settingsBtn = document.querySelector('.settings');
 export const popupSettings = document.querySelector('.popupSettings');
+export const updateSettingsBtn = document.querySelector('.updateSettingsBtn');
+export const chatNameInput = document.querySelector('.chatNameInput');

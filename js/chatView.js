@@ -1,5 +1,5 @@
-import {buttonSend, chat, getNameOfSender, getMessage} from './UiElements.js';
-import {sendMessage} from './controller.js';
+import {buttonSend, chat, getNameOfSender, getMessage, updateSettingsBtn, chatNameInput} from './UiElements.js';
+import {sendMessage, changeChatName} from './controller.js';
 import {isValid} from './validation.js';
 
 buttonSend.addEventListener('click', () => {
@@ -12,6 +12,11 @@ buttonSend.addEventListener('click', () => {
             createNewMessage(msg, false)
         }
 ;})
+
+updateSettingsBtn.addEventListener('click', () => {
+    let newChatName = chatNameInput.value
+    changeChatName(newChatName)
+})
 
 export function createNewMessage (msg, isInput) {
     let newMessage = document.createElement('div');

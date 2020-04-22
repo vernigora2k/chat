@@ -9,7 +9,7 @@ buttonSend.addEventListener('click', () => {
         }
         if (isValid(msg)) {
             sendMessage(msg);
-            let outputMessage = new Message(msg);
+            let outputMessage = new Message(msg, 'output');
             outputMessage.createAndAddMessageInChat();
             //createNewMessage(msg, false)
         }
@@ -21,15 +21,25 @@ updateSettingsBtn.addEventListener('click', () => {
 })
 
 
-class Message {
-    constructor(value) {
+export class Message {
+    constructor(value, isInputOrOutput) {
         this.value = value
         this.date = new Date()
         this.sender = this.value.user
+        this.inputOrOutput = isInputOrOutput
     }
     createAndAddMessageInChat() {
         let newMessage = document.querySelector('div')
-        newMessage.classList.add('outputMessage')
+
+        if (this.inputOrOutput == 'output') {
+            newMessage.classList.add('outputMessage')
+        } else {
+            newMessage.classList.add('inputMessage')
+        }
+        if (this.value.message.length > 15) {
+            this.value.message = '<br>' + getMessage.value //добавить перенос строки если сообщение длинное
+        }
+        
         newMessage.innerHTML = '<p class="message__text">'+
             this.value.user + ':  ' +
             this.value.message + '</p>' +
@@ -54,24 +64,24 @@ class Message {
 // }
 // ;})
 
-export function createNewMessage (msg, isInput) {
-    let newMessage = document.createElement('div');
-    let date = new Date();
+// export function createNewMessage (msg, isInput) {
+//     let newMessage = document.createElement('div');
+//     let date = new Date();
     
-    if (isInput) { 
-        newMessage.classList.add('inputMessage'); 
-    } else {
-        newMessage.classList.add('outputMessage');
-    }
-    if (getMessage.value.length > 15) {
-        getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
+//     if (isInput) { 
+//         newMessage.classList.add('inputMessage'); 
+//     } else {
+//         newMessage.classList.add('outputMessage');
+//     }
+//     if (getMessage.value.length > 15) {
+//         getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
         
-    newMessage.innerHTML = '<p class="message__text">'+
-        msg.user + ':  ' +
-        msg.message + '</p>' +
-        '<p class="dateOnMessage">' + 
-        date.toTimeString().slice(0,5) +
-        '</p>';
-    chat.append(newMessage);
-    getMessage.value = '';
-}
+//     newMessage.innerHTML = '<p class="message__text">'+
+//         msg.user + ':  ' +
+//         msg.message + '</p>' +
+//         '<p class="dateOnMessage">' + 
+//         date.toTimeString().slice(0,5) +
+//         '</p>';
+//     chat.append(newMessage);
+//     getMessage.value = '';
+// }

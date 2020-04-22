@@ -1,5 +1,5 @@
 import {socket} from './client.js';
-import {createNewMessage} from './chatView.js';
+import {Message} from './chatView.js';
 import {apiRequest} from './apiClient.js';
 import {popupCreateAccount, popupAutorizationBlock, logoutBtn} from './UiElements.js';
 import {settingsBtn, popupSettings} from './UiElements.js';
@@ -9,7 +9,8 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    createNewMessage(msg, true);
+    let inputMessage = new Message(msg, 'input');
+    inputMessage.createAndAddMessageInChat();
 });
 
 const isAutorized = new function(){

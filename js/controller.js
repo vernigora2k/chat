@@ -9,8 +9,8 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    let inputMessage = new Message(msg, 'input');
-    inputMessage.createAndAddMessageInChat();
+    // let inputMessage = new Message(msg, 'input');
+    // inputMessage.createAndAddMessageInChat();
 });
 
 const isAutorized = new function(){

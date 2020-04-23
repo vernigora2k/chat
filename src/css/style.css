@@ -196,7 +196,7 @@ body {
                 .loginLabel {
                 }
 
-                .loginInput {
+                .loginInputCreate {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
@@ -207,7 +207,7 @@ body {
                 .passwordLabel {
                 }
 
-                .passwordInput {
+                .passwordInputCreate {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
@@ -293,7 +293,7 @@ body {
                 .loginLabel {
                 }
 
-                .loginInput {
+                .loginInputAutoriz {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
@@ -304,7 +304,7 @@ body {
                 .passwordLabel {
                 }
 
-                .passwordInput {
+                .passwordInputAutoriz {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;

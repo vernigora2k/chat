@@ -37,7 +37,7 @@ export class Message {
             newMessage.classList.add('inputMessage')
         }
         if (this.value.message.length > 15) {
-            this.value.message = '<br>' + getMessage.value //добавить перенос строки если сообщение длинное
+            this.value.message = '<br>' + this.value.message //добавить перенос строки если сообщение длинное
         }
         
         newMessage.innerHTML = '<p class="message__text">'+

@@ -48,7 +48,6 @@ export class Message {
             '</p>';
         chat.append(newMessage);
         getMessage.value = '';
-
     }
 }
 // const msgTemp = {

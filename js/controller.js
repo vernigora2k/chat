@@ -20,7 +20,7 @@ const isAutorized = new function(){
     }
 }
 //document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
-//document.cookie = "cookieUserToken=SomeToken";
+document.cookie = "cookieUserToken=SomeToken";
 
 logoutBtn.addEventListener('click', () => {
     Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })

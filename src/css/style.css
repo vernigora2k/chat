@@ -146,13 +146,13 @@ body {
     overflow: hidden;
     top: 0px;
 }
+
     .popupCreateAccount__content {
         height: 319px;
         width: 273px;
         background-color: white;
         margin-left: 24px;
-        margin-top: 106px;
-        
+        margin-top: 106px; 
     }
 
         .popupCreateAccount__content>div {
@@ -163,15 +163,10 @@ body {
             margin-top: 16px;
         }
 
-            .popupHeaderCreate {
-            }
                 .popupHeaderCreate>p {
                     margin: 0px;
                     padding: 0px;
                 }
-
-            .crossClose {   
-            }    
 
                 .crossClose>p {
                     width: 14px;
@@ -193,18 +188,12 @@ body {
                 margin-bottom: 30px;
             }
 
-                .loginLabel {
-                }
-
                 .loginInputCreate {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
                     margin-bottom: 8px;
                     border: 1px solid #000000;
-                }
-
-                .passwordLabel {
                 }
 
                 .passwordInputCreate {
@@ -243,13 +232,13 @@ body {
     overflow: hidden;
     top: 0px;
 }
+
     .popupAutorization__content {
         height: 319px;
         width: 273px;
         background-color: white;
         margin-left: 24px;
-        margin-top: 106px;
-        
+        margin-top: 106px;   
     }
 
         .popupAutorization__content>div {
@@ -260,15 +249,10 @@ body {
             margin-top: 16px;
         }
 
-            .popupHeaderAutorization {
-            }
                 .popupHeaderAutorization>p {
                     margin: 0px;
                     padding: 0px;
                 }
-
-            .crossClose {   
-            }    
 
                 .crossClose>p {
                     width: 14px;
@@ -290,18 +274,12 @@ body {
                 margin-bottom: 30px;
             }
 
-                .loginLabel {
-                }
-
                 .loginInputAutoriz {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
                     margin-bottom: 8px;
                     border: 1px solid #000000;
-                }
-
-                .passwordLabel {
                 }
 
                 .passwordInputAutoriz {
@@ -322,8 +300,7 @@ body {
             .popupFooterRegistration {
                 margin-left: 14px;
                 margin-bottom: 17px;
-                width: 246px;
-                
+                width: 246px;    
             }
                 
                 .popupFooterRegistration>p {
@@ -342,13 +319,13 @@ body {
     overflow: hidden;
     top: 0px;
 }
+
     .popupSettings__content {
         height: 319px;
         width: 273px;
         background-color: white;
         margin-left: 24px;
-        margin-top: 106px;
-        
+        margin-top: 106px;  
     }
 
         .popupSettings__content>div {
@@ -363,13 +340,11 @@ body {
             .popupHeaderSettings {
                 margin-top: 16px;
             }
+
                 .popupHeaderSettings>p {
                     margin: 0px;
                     padding: 0px;
                 }
-
-            .settingsCrossClose { 
-            }    
 
                 .settingsCrossClose>p {
                     width: 14px;
@@ -390,9 +365,6 @@ body {
                 margin-left: 14px;
                 margin-top: 0px;
             }
-
-                .chatNameLabel {
-                }
 
                 .chatNameInput {
                     width: 207px;

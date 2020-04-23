@@ -1,4 +1,4 @@
-import {buttonSend, chat, getNameOfSender, getMessage, updateSettingsBtn, chatNameInput} from './UiElements.js';
+import {buttonSend, chat, getNameOfSender, getMessage, updateSettingsBtn, chatNameInput, logoutBtn, popupAutorizationBlock, settingsBtn, popupSettings} from './UiElements.js';
 import {sendMessage, changeChatName} from './controller.js';
 import {isValid} from './validation.js';
 
@@ -11,15 +11,23 @@ buttonSend.addEventListener('click', () => {
             sendMessage(msg);
             let outputMessage = new Message(msg, 'output');
             outputMessage.createAndAddMessageInChat();
-            //createNewMessage(msg, false)
         }
 ;})
+
+settingsBtn.addEventListener('click', () => {
+    popupSettings.classList.remove('dispNone')
+})
 
 updateSettingsBtn.addEventListener('click', () => {
     let newChatName = chatNameInput.value
     changeChatName(newChatName)
 })
 
+logoutBtn.addEventListener('click', () => {
+    Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })
+    popupAutorizationBlock.classList.remove('dispNone')
+    document.location.reload(true)
+})
 
 export class Message {
     constructor(msg, inputOrOutput) {

@@ -1,8 +1,16 @@
 import {socket} from './client.js';
 import {Message} from './chatView.js';
 import {apiRequest} from './apiClient.js';
-import {popupCreateAccount, popupAutorizationBlock, logoutBtn} from './UiElements.js';
-import {settingsBtn, popupSettings} from './UiElements.js';
+import {popupCreateAccount, popupAutorizationBlock} from './UiElements.js';
+
+//document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
+//document.cookie = "cookieUserToken=SomeToken";
+const isAutorized = new function(){
+    if (Cookies.get('cookieUserToken')) {
+        popupCreateAccount.classList.add('dispNone')
+        popupAutorizationBlock.classList.add('dispNone')
+    }
+}
 
 export function sendMessage(msg) {
     socket.emit('message', msg);
@@ -12,25 +20,6 @@ socket.on('message', function(msg){
     let inputMessage = new Message(msg, 'input');
     inputMessage.createAndAddMessageInChat();
 });
-
-const isAutorized = new function(){
-    if (Cookies.get('cookieUserToken')) {
-        popupCreateAccount.classList.add('dispNone')
-        popupAutorizationBlock.classList.add('dispNone')
-    }
-}
-//document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
-//document.cookie = "cookieUserToken=SomeToken";
-
-logoutBtn.addEventListener('click', () => {
-    Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })
-    popupAutorizationBlock.classList.remove('dispNone')
-    document.location.reload(true)
-})
-
-settingsBtn.addEventListener('click', () => {
-    popupSettings.classList.remove('dispNone')
-})
 
 export function autorization(username, password) {
     const url = 'api/user/auth'
@@ -50,8 +39,7 @@ export function autorization(username, password) {
     apiRequest(ulr, config)
         .then(data => document.cookie = 'cookieUserToken=' + encodeURIComponent(data)) +
               '; path=/; max-age=100000'
-        .catch(error => alert(error));
-        
+        .catch(error => alert(error));      
 }
 
 export function changeChatName(newChatName) {

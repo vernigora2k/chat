@@ -55,7 +55,7 @@ export function changeChatName(newChatName) {
         body: JSON.stringify(payload)
     }
 
-    apiRequest(ulr, config)
+    apiRequest(url, config)
         .then(data => console.log(data))
         .catch(error => alert(error));
         

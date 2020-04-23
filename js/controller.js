@@ -9,8 +9,8 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    // let inputMessage = new Message(msg, 'input');
-    // inputMessage.createAndAddMessageInChat();
+    let inputMessage = new Message(msg, 'input');
+    inputMessage.createAndAddMessageInChat();
 });
 
 const isAutorized = new function(){
@@ -20,7 +20,7 @@ const isAutorized = new function(){
     }
 }
 //document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
-document.cookie = "cookieUserToken=SomeToken";
+//document.cookie = "cookieUserToken=SomeToken";
 
 logoutBtn.addEventListener('click', () => {
     Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })

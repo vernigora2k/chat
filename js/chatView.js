@@ -22,14 +22,14 @@ updateSettingsBtn.addEventListener('click', () => {
 
 
 export class Message {
-    constructor(msg, isInputOrOutput) {
+    constructor(msg, inputOrOutput) {
         this.msg = msg
         this.date = new Date()
         this.sender = this.msg.user
-        this.inputOrOutput = isInputOrOutput
+        this.inputOrOutput = inputOrOutput
     }
     createAndAddMessageInChat() {
-        let newMessage = document.querySelector('div')
+        let newMessage = document.createElement('div')
 
         if (this.inputOrOutput == 'output') {
             newMessage.classList.add('outputMessage')
@@ -50,43 +50,4 @@ export class Message {
         getMessage.value = '';
     }
 }
-// const msgTemp = {
-//     user: 'valia0',
-//     message: 'Hello everyone'
-// }
-// let tempClass = new Message(msgTemp, 'output');
-// console.log(tempClass.msg.message);
-// tempClass.createAndAddMessageInChat()
 
-// buttonSend.addEventListener('click', () => {
-//     const msg = {
-//     user: getNameOfSender.value,
-//     message: getMessage.value
-// }
-// if (isValid(msg)) {
-//     sendMessage(msg);
-//     createNewMessage(msg, false)
-// }
-// ;})
-
-// export function createNewMessage (msg, isInput) {
-//     let newMessage = document.createElement('div');
-//     let date = new Date();
-    
-//     if (isInput) { 
-//         newMessage.classList.add('inputMessage'); 
-//     } else {
-//         newMessage.classList.add('outputMessage');
-//     }
-//     if (getMessage.value.length > 15) {
-//         getMessage.value = '<br>' + getMessage.value} //добавить перенос строки если сообщение длинное
-        
-//     newMessage.innerHTML = '<p class="message__text">'+
-//         msg.user + ':  ' +
-//         msg.message + '</p>' +
-//         '<p class="dateOnMessage">' + 
-//         date.toTimeString().slice(0,5) +
-//         '</p>';
-//     chat.append(newMessage);
-//     getMessage.value = '';
-// }

@@ -22,10 +22,10 @@ updateSettingsBtn.addEventListener('click', () => {
 
 
 export class Message {
-    constructor(value, isInputOrOutput) {
-        this.value = value
+    constructor(msg, isInputOrOutput) {
+        this.msg = msg
         this.date = new Date()
-        this.sender = this.value.user
+        this.sender = this.msg.user
         this.inputOrOutput = isInputOrOutput
     }
     createAndAddMessageInChat() {
@@ -36,13 +36,13 @@ export class Message {
         } else {
             newMessage.classList.add('inputMessage')
         }
-        if (this.value.message.length > 15) {
-            this.value.message = '<br>' + this.value.message //добавить перенос строки если сообщение длинное
+        if (this.msg.message.length > 15) {
+            this.msg.message = '<br>' + this.msg.message //добавить перенос строки если сообщение длинное
         }
-        
+    
         newMessage.innerHTML = '<p class="message__text">'+
-            this.value.user + ':  ' +
-            this.value.message + '</p>' +
+            this.msg.user + ':  ' +
+            this.msg.message + '</p>' +
             '<p class="dateOnMessage">' + 
             this.date.toTimeString().slice(0,5) +
             '</p>';
@@ -51,7 +51,13 @@ export class Message {
 
     }
 }
-
+// const msgTemp = {
+//     user: 'valia0',
+//     message: 'Hello everyone'
+// }
+// let tempClass = new Message(msgTemp, 'output');
+// console.log(tempClass.msg.message);
+// tempClass.createAndAddMessageInChat()
 
 // buttonSend.addEventListener('click', () => {
 //     const msg = {

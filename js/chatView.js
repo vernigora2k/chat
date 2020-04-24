@@ -1,13 +1,13 @@
 import {buttonSend, chat, getNameOfSender, getMessage, updateSettingsBtn, chatNameInput, logoutBtn, popupAutorizationBlock, settingsBtn, popupSettings} from './UiElements.js';
 import {sendMessage, changeChatName} from './controller.js';
-import {isValid} from './validation.js';
+import {isMessageValid} from './validation.js';
 
 buttonSend.addEventListener('click', () => {
             const msg = {
             user: getNameOfSender.value,
             message: getMessage.value
         }
-        if (isValid(msg)) {
+        if (isMessageValid(msg)) {
             sendMessage(msg);
             let outputMessage = new Message(msg, 'output');
             outputMessage.createAndAddMessageInChat();

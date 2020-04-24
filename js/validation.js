@@ -1,5 +1,5 @@
 
-export function isValid (msg) {
+export function isMessageValid (msg) {
     let trimmedUser = msg.user.trim();
     let trimmedMessage = msg.message.trim();
     if (trimmedUser.length>1 && trimmedMessage.length>0) {
@@ -8,14 +8,10 @@ export function isValid (msg) {
 }
 
 export function isNameValid (username) {
-    if (username.length > 1) {
-        return true
-    }
+    return username.length > 1
 }
 
 export function isPasswordValid (password) {
-    if (password.length > 3) {
-        return true
-    }
+    return password.length > 3
 }
 

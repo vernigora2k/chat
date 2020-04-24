@@ -4,109 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Chat</title>
+    <link rel="stylesheet" href="./src/fonts/roboto-regular.css">
     <link rel="stylesheet" href="./src/css/normalize.css">
-    <link rel="stylesheet" href="./src/css/fonts/roboto-regular.css">
     <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
 
-    <div class="mainScreen">
-        <!-- <input class="mainScreen__YourChatName" type="text" value="Your chat name" onfocus="value = ''"> -->
-        <div class="mainScreen__settingsArea"> 
-            <form class="settingsForm flex" action="#">
-                <input class="settings" type="submit" value="Настройки">
-                <input class="logout" type="submit" value="Выйти">
+    <div class="main-screen">
+        <input class="main-screen__chatname-input" type="text" value="Your chat name" onfocus="value = ''">
+        <div class="main-screen__settings-area"> 
+            <form class="settings-form flex" action="#">
+                <input class="settings-btn" type="submit" value="Настройки">
+                <input class="logout-btn" type="submit" value="Выйти">
             </form>
         </div> 
-        <div class="mainScreen__chat flex">
-            <div class="inputMessage">
-                <p class="message__text">Bot: &nbsp; <br>
-                    Привет! Это первое сообщение.</p>
-                <p class="dateOnMessage">12:01</p>
-            </div>
-            <div class="inputMessage">
-                <p class="message__text">     
-                    Bot: &nbsp; <br>
-                    А это второе и, кажется, оно очень 
-                    длинное, чтобы поместиться на 
-                    одной строке
-                </p>
-                <p class="dateOnMessage">12:02</p>
-            </div>
-            <div class="outputMessage">
-                <p class="message__text">Имя:	&nbsp;Добрый день!</p>
-                <p class="dateOnMessage">12:05</p>
-            </div>
+        <div class="main-screen__chat flex">
         </div>
-        <div class="mainScreen__messageArea">
-            <form class="sendForm flex" action="#">   
-                <input class="messageInput" type="text" value="message.." onfocus="value = ''">
-                <input class="send" type="submit" value="->">
+        <div class="main-screen__message-area">
+            <form class="send-form flex" action="#">   
+                <input class="message-input-field" type="text" value="message.." onfocus="value = ''">
+                <input class="send-btn" type="submit" value="->">
             </form>
         </div>
     </div>
 
-    <div class="popupCreateAccount">
-        <div class="popupCreateAccount__content flex">
-            <div>
-                <div class="popupHeaderCreate">
+    <div class="popup-create-account">
+        <div class="popup-create-account__content flex">
+            <div class="popup-create-account__header">
+                <div class="create-account-header-label">
                     <p>Создать аккаунт</p>
                 </div>
-                <div class="crossClose">
+                <div class="create-account-header-close-cross">
                     <p>+</p>
                 </div>
             </div>
-            <form action="#" class="popupAutorizationCreate">
-                <label class="loginLabel" for="loginInputCreate">Имя (логин)</label>
-                <input class="loginInputCreate" id="loginInputCreate" type="text" >
-                <label class="passwordLabel" for="passwordInputCreate" for="">Пароль</label>
-                <input class="passwordInputCreate" id="passwordInputCreate" type="text" >
-                <input class="createAccountBtn" type="submit" value="Создать">
+            <form action="#" class="popup-create-account__autorization">
+                <label class="login-label-create" for="login-input-create">Имя (логин)</label>
+                <input class="login-input-create" id="login-input-create" type="text" >
+                <label class="password-label-create" for="password-input-create">Пароль</label>
+                <input class="password-input-create" id="password-input-create" type="text" >
+                <input class="create-account-btn" type="submit" value="Создать">
             </form>
-            <div class="popupFooterCreate">
+            <div class="popup-create-account__footer">
                 <p>У меня уже есть аккаунт (войти)</p>
             </div>
         </div>
     </div>
 
-    <div class="popupAutorizationBlock">
-        <div class="popupAutorization__content flex">
-            <div>
-                <div class="popupHeaderAutorization">
+    <div class="popup-autorization">
+        <div class="popup-autorization__content flex">
+            <div class="popup-autorization__header" >
+                <div class="autorization-header-label">
                     <p>Авторизация</p>
                 </div>
-                <div class="crossClose">
+                <div class="autorization-close-cross">
                     <p>+</p>
                 </div>
             </div>
-            <form action="#" class="popupAutorization">
-                <label class="loginLabel" for="loginInputAutoriz">Имя (логин)</label>
-                <input class="loginInputAutoriz" id="loginInputAutoriz" type="text" >
-                <label class="passwordLabel" for="passwordInputAutoriz" for="">Пароль</label>
-                <input class="passwordInputAutoriz" id="passwordInputAutoriz" type="text" >
-                <input class="entryAccountBtn" type="submit" value="Войти">
+            <form action="#" class="popup-autorization__autorization">
+                <label class="login-label-autorization" for="login-input-autorization">Имя (логин)</label>
+                <input class="login-input-autorization" id="login-input-autorization" type="text" >
+                <label class="password-label-autorization" for="password-input-autorization">Пароль</label>
+                <input class="password-input-autorization" id="password-input-autorization" type="text" >
+                <input class="autorization-btn" type="submit" value="Войти">
             </form>
-            <div class="popupFooterRegistration">
+            <div class="popup-autorization__footer-registration">
                 <p>Регистрация</p>
             </div>
         </div>
     </div> 
 
-    <div class="popupSettings dispNone">
-        <div class="popupSettings__content">
-            <div>
-                <div class="popupHeaderSettings">
+    <div class="popup-settings hidden">
+        <div class="popup-settings__content">
+            <div class="popup-settings__header">
+                <div class="settings-header-label">
                     <p>Настройки</p>
                 </div>
-                <div class="settingsCrossClose">
+                <div class="settings-close-cross">
                     <p>+</p>
                 </div>
             </div>
-            <form action="#" class="popupChatName">
-                <label class="chatNameLabel" for="chatNameInput">Имя в чате</label>
-                <input class="chatNameInput" id="chatNameInput" type="text" placeholder="Стив">
-                <input class="updateSettingsBtn" type="submit" value="->">
+            <form action="#" class="popup-change-chatname">
+                <label class="chatname-label" for="chatname-input">Имя в чате</label>
+                <input class="chatname-input" id="chatname-input" type="text" placeholder="Стив">
+                <input class="chatname-update-btn" type="submit" value="->">
             </form>
         </div>
     </div>

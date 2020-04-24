@@ -25,11 +25,11 @@ body {
     flex-wrap: wrap;
 }
 
-.dispNone {
+.hidden {
     display: none;
 }
 
-/* input.mainScreen__YourChatName {
+.main-screen__chatname-input {
     width: 304px;
     height: 32px;
     margin-top: 8px;
@@ -37,27 +37,27 @@ body {
     padding-left: 8px;
     border: 1px solid #000000;
     color: #7C7C7C;
-} */
+}
 
-.mainScreen__settingsArea {
+.main-screen__settings-area {
     margin: 8px;
 }
   
-    input.settings {
+    .settings-form {
         width: 98px;
         height: 32px;
         border: 1px solid #000000;
         background-color: #ffffff;
     }
 
-    input.logout {
+    .logout-btn {
         width: 66px;
         height: 32px;
         border: 1px solid #000000;
         background-color: #ffffff;
     }
 
-.mainScreen__chat {
+.main-screen__chat {
     flex-direction: column;
     justify-content: flex-end;
     flex-wrap: nowrap;
@@ -68,7 +68,7 @@ body {
     contain: paint; 
 }
 
-    .inputMessage {
+    .message-input {
         margin-left: 8px;
         margin-right: 8px;
         margin-bottom: 8px;
@@ -84,7 +84,7 @@ body {
             margin-right: 8px;
         }
 
-    .outputMessage {
+    .message-output {
         align-self: flex-end;
         margin-left: 8px;
         margin-right: 8px;
@@ -100,7 +100,7 @@ body {
             margin-right: 8px;
         }
 
-    .dateOnMessage {
+    .date-on-message {
         margin-top: 0px;
         padding-top: 0px;
         margin-bottom: 5px;
@@ -113,16 +113,16 @@ body {
         
     }
 
-.mainScreen__messageArea {
+.main-screen__message-area {
     margin: 8px;
     justify-content: space-between;
 }
 
-    form.flex {
+    .send-form {
         justify-content: space-between;
     }
 
-        input.messageInput {
+        .message-input-field {
             width: 267px;
             height: 32px;
             padding-left: 8px;
@@ -130,7 +130,7 @@ body {
             color: #7C7C7C;
         }
 
-        input.send {
+        .send-btn {
             width: 29px;
             height: 32px;
             border: 1px solid #000000;
@@ -138,7 +138,7 @@ body {
         }
 
 /* popupCreateAccount  */
-.popupCreateAccount {
+.popup-create-account {
     width: 321px;
     min-height: 533px;
     background-color: #535353;
@@ -147,7 +147,7 @@ body {
     top: 0px;
 }
 
-    .popupCreateAccount__content {
+    .popup-create-account__content {
         height: 319px;
         width: 273px;
         background-color: white;
@@ -155,7 +155,7 @@ body {
         margin-top: 106px; 
     }
 
-        .popupCreateAccount__content>div {
+        .popup-create-account__header {
             display: flex;
             justify-content: space-between;
             width: 246px;
@@ -163,12 +163,12 @@ body {
             margin-top: 16px;
         }
 
-                .popupHeaderCreate>p {
+                .create-account-header-label>p {
                     margin: 0px;
                     padding: 0px;
                 }
 
-                .crossClose>p {
+                .create-account-header-close-cross>p {
                     width: 14px;
                     height: 20.82px;
                     font-family: Roboto;
@@ -182,13 +182,13 @@ body {
                     margin: 0px;
                 }
 
-            .popupAutorizationCreate {
+            .popup-create-account__autorization {
                 margin-left: 14px;
                 margin-top: 40px;
                 margin-bottom: 30px;
             }
 
-                .loginInputCreate {
+                .login-input-create {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
@@ -196,14 +196,14 @@ body {
                     border: 1px solid #000000;
                 }
 
-                .passwordInputCreate {
+                .password-input-create {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
                     border: 1px solid #000000;
                 }
 
-                .createAccountBtn {
+                .create-account-btn {
                     width: 84px;
                     height: 32px;
                     background: #FFFFFF;
@@ -211,19 +211,19 @@ body {
                     border: 1px solid #000000;
                 }
 
-            .popupFooterCreate {
+            .popup-create-account__footer {
                 margin-left: 14px;
                 margin-bottom: 17px;
             }
                 
-                .popupFooterCreate>p {
+                .popup-create-account__footer>p {
                     margin: 0px;
                     padding: 0px;
                 }
 
 
-/* popupAutorizationBlock  */
-.popupAutorizationBlock {
+/* popupAutorization  */
+.popup-autorization {
     display: none;
     width: 321px;
     min-height: 533px;
@@ -233,7 +233,7 @@ body {
     top: 0px;
 }
 
-    .popupAutorization__content {
+    .popup-autorization__content {
         height: 319px;
         width: 273px;
         background-color: white;
@@ -241,7 +241,7 @@ body {
         margin-top: 106px;   
     }
 
-        .popupAutorization__content>div {
+        .popup-autorization__header {
             display: flex;
             justify-content: space-between;
             width: 246px;
@@ -249,12 +249,12 @@ body {
             margin-top: 16px;
         }
 
-                .popupHeaderAutorization>p {
+                .autorization-header-label>p {
                     margin: 0px;
                     padding: 0px;
                 }
 
-                .crossClose>p {
+                .autorization-close-cross>p {
                     width: 14px;
                     height: 20.82px;
                     font-family: Roboto;
@@ -268,13 +268,13 @@ body {
                     margin: 0px;
                 }
 
-            .popupAutorization {
+            .popup-autorization__autorization {
                 margin-left: 14px;
                 margin-top: 40px;
                 margin-bottom: 30px;
             }
 
-                .loginInputAutoriz {
+                .login-input-autorization {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
@@ -282,14 +282,14 @@ body {
                     border: 1px solid #000000;
                 }
 
-                .passwordInputAutoriz {
+                .password-input-autorization {
                     width: 245px;
                     height: 32px;
                     margin-top: 8px;
                     border: 1px solid #000000;
                 }
 
-                .entryAccountBtn {
+                .autorization-btn {
                     width: 62px;
                     height: 32px;
                     background: #FFFFFF;
@@ -297,21 +297,20 @@ body {
                     border: 1px solid #000000;
                 }
 
-            .popupFooterRegistration {
+            .popup-autorization__footer-registration {
                 margin-left: 14px;
                 margin-bottom: 17px;
-                width: 246px;    
+                width: 246px;   
             }
                 
-                .popupFooterRegistration>p {
+                .popup-autorization__footer-registration>p {
                     margin: 0px;
                     padding: 0px;
-                    margin-left: auto;
-                    margin-right: auto;
+                    margin-left: 77px;
                 }
 
 /* popupSettings  */
-.popupSettings {
+.popup-settings {
     width: 321px;
     min-height: 533px;
     background-color: #535353;
@@ -320,7 +319,7 @@ body {
     top: 0px;
 }
 
-    .popupSettings__content {
+    .popup-settings__content {
         height: 319px;
         width: 273px;
         background-color: white;
@@ -328,7 +327,7 @@ body {
         margin-top: 106px;  
     }
 
-        .popupSettings__content>div {
+        .popup-settings-header {
             display: flex;
             justify-content: space-between;
             width: 246px;
@@ -337,16 +336,16 @@ body {
             margin-top: 16px;
         }
 
-            .popupHeaderSettings {
+            .settings-header-label {
                 margin-top: 16px;
             }
 
-                .popupHeaderSettings>p {
+                .settings-header-label>p {
                     margin: 0px;
                     padding: 0px;
                 }
 
-                .settingsCrossClose>p {
+                .settings-close-cross>p {
                     width: 14px;
                     height: 20.82px;
                     font-family: Roboto;
@@ -361,12 +360,12 @@ body {
                     padding: 0px;
                 }
 
-            .popupChatName {
+            .popup-change-chatname {
                 margin-left: 14px;
                 margin-top: 0px;
             }
 
-                .chatNameInput {
+                .chatname-input {
                     width: 207px;
                     height: 32px;
                     margin-top: 8px;
@@ -375,7 +374,7 @@ body {
                     border: 1px solid #000000;
                 }
 
-                .updateSettingsBtn {
+                .chatname-update-btn {
                     width: 30px;
                     height: 32px;
                     padding: 8px;

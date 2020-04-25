@@ -1,14 +1,14 @@
 import {socket} from './client.js';
 import {Message} from './chatView.js';
 import {apiRequest} from './apiClient.js';
-import {popupCreateAccount, popupAutorizationBlock} from './UiElements.js';
+import {popupCreateAccount, popupAutorization} from './UiElements.js';
 
 //document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
 //document.cookie = "cookieUserToken=SomeToken";
 const isAutorized = new function(){
     if (Cookies.get('cookieUserToken')) {
-        popupCreateAccount.classList.add('dispNone')
-        popupAutorizationBlock.classList.add('dispNone')
+        popupCreateAccount.classList.add('hidden')
+        popupAutorization.classList.add('hidden')
     }
 }
 
@@ -17,8 +17,8 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    let inputMessage = new Message(msg, 'input');
-    inputMessage.createAndAddMessageInChat();
+    let inputMessageFromServer = new Message(msg, 'input');
+    inputMessageFromServer.createAndAddMessageInChat();
 });
 
 export function autorization(username, password) {

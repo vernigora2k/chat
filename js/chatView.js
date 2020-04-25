@@ -1,11 +1,11 @@
-import {buttonSend, chat, getNameOfSender, getMessage, updateSettingsBtn, chatNameInput, logoutBtn, popupAutorizationBlock, settingsBtn, popupSettings} from './UiElements.js';
+import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings} from './UiElements.js';
 import {sendMessage, changeChatName} from './controller.js';
 import {isMessageValid} from './validation.js';
 
-buttonSend.addEventListener('click', () => {
+sendBtn.addEventListener('click', () => {
             const msg = {
-            user: getNameOfSender.value,
-            message: getMessage.value
+            user: chatnameInput.value,
+            message: messageInput.value
         }
         if (isMessageValid(msg)) {
             sendMessage(msg);
@@ -15,17 +15,16 @@ buttonSend.addEventListener('click', () => {
 ;})
 
 settingsBtn.addEventListener('click', () => {
-    popupSettings.classList.remove('dispNone')
+    popupSettings.classList.remove('hidden')
 })
 
-updateSettingsBtn.addEventListener('click', () => {
-    let newChatName = chatNameInput.value
-    changeChatName(newChatName)
+chatnameUpdateBtn.addEventListener('click', () => {
+    changeChatName(chatnameInput.value)
 })
 
 logoutBtn.addEventListener('click', () => {
     Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })
-    popupAutorizationBlock.classList.remove('dispNone')
+    popupAutorization.classList.remove('hidden')
     document.location.reload(true)
 })
 
@@ -55,7 +54,7 @@ export class Message {
             this.date.toTimeString().slice(0,5) +
             '</p>';
         chat.append(newMessage);
-        getMessage.value = '';
+        messageInput.value = '';
     }
 }
 

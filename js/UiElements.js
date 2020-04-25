@@ -1,11 +1,20 @@
 
-export const chat = document.querySelector('.main-screen');
+export const chat = document.querySelector('.main-screen__chat');
 export const sendBtn = document.querySelector('.send-btn'); 
 export const logoutBtn = document.querySelector('.logout-btn');
 export const settingsBtn = document.querySelector('.settings-btn');
 export const chatnameUpdateBtn = document.querySelector('.chatname-update-btn');
-export const chatnameInput = document.querySelector('.main-screen__chatname-input');
+export const createAccountBtn = document.querySelector('.create-account-btn');
+export const autorizationBtn = document.querySelector('.autorization-btn');
+export const toPopupAutorizationBtn = document.querySelector('.link-to-popup-autorization');
+export const toPopupCreateAccountBtn = document.querySelector('.link-to-popup-create-account');
+export const settingsCloseCrossBtn = document.querySelector('.settings-close-cross');
+export const chatnameInput = document.querySelector('.chatname-input');
 export const messageInput = document.querySelector('.message-input-field');
+export const createAccountLoginInput = document.querySelector('.login-input-create')
+export const createAccountPasswordInput = document.querySelector('.password-input-create');
+export const autorizationLoginInput = document.querySelector('.login-input-autorization');
+export const autorizationPasswordInput = document.querySelector('.password-input-autorization');
 export const sendForm = document.querySelector('.send-form');
 export const popupCreateAccount = document.querySelector('.popup-create-account');
 export const popupAutorization = document.querySelector('.popup-autorization');

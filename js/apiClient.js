@@ -1,5 +1,4 @@
 import { URL } from "./config.js";
-import { isNameValid, isPasswordValid } from "./validation.js";
 
 export function apiRequest(url, config) {
     fetch(URL + url, config)
@@ -7,7 +6,7 @@ export function apiRequest(url, config) {
         .catch(err => console.log("Ошибка!", err))
 }
 
-export function createUser(username, password) {
+export function createAccount(username, password) {
     const url = '/api/user'
     const payload = {
         username: username,
@@ -21,13 +20,7 @@ export function createUser(username, password) {
         },
         body: JSON.stringify(payload)
     }
-
-    if (isNameValid && isPasswordValid) {
-        apiRequest(url, config)
-            .then(data => console.log(data)) 
-            .catch(error => alert(error))
-    } else {
-        alert('Имя пользователя долно быть минимум 2 символа, Пароль должен быть минимум 4 символа')
-    }
-    
+    return apiRequest(url, config)
+        .then(data => console.log('Данные с сервера' + data)) 
+        .catch(alert)  
 }

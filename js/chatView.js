@@ -1,6 +1,7 @@
-import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings} from './UiElements.js';
-import {sendMessage, changeChatName} from './controller.js';
+import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings, createAccountBtn, createAccountLoginInput, createAccountPasswordInput, toPopupAutorizationBtn, popupCreateAccount, toPopupCreateAccountBtn, autorizationBtn, autorizationLoginInput, autorizationPasswordInput, settingsCloseCrossBtn} from './UiElements.js';
+import {sendMessage, changeChatName, autorization} from './controller.js';
 import {isMessageValid} from './validation.js';
+import {createAccount} from './apiClient.js';
 
 sendBtn.addEventListener('click', () => {
             const msg = {
@@ -23,9 +24,35 @@ chatnameUpdateBtn.addEventListener('click', () => {
 })
 
 logoutBtn.addEventListener('click', () => {
-    Cookies.set('cookieUserToken', 'SomeToken', { expires: -1 })
+    Cookies.remove('cookieUserToken')
     popupAutorization.classList.remove('hidden')
     document.location.reload(true)
+})
+
+createAccountBtn.addEventListener('click', () => {
+//TODO: сделать валидацию логина и пароля
+    createAccount(createAccountLoginInput.value,
+                  createAccountPasswordInput.value)
+})
+
+autorizationBtn.addEventListener('click', () => {
+    autorization(autorizationLoginInput.value,
+                 autorizationPasswordInput.value)
+} )
+
+toPopupAutorizationBtn.addEventListener('click', () => {
+    popupCreateAccount.classList.add('hidden')
+    popupAutorization.classList.remove('hidden')
+})
+
+toPopupCreateAccountBtn.addEventListener('click', () => {
+    console.log('click')
+    popupAutorization.classList.add('hidden')
+    popupCreateAccount.classList.remove('hidden')
+})
+
+settingsCloseCrossBtn.addEventListener('click', () => {
+    popupSettings.classList.add('hidden')
 })
 
 export class Message {
@@ -39,9 +66,9 @@ export class Message {
         let newMessage = document.createElement('div')
 
         if (this.inputOrOutput == 'output') {
-            newMessage.classList.add('outputMessage')
+            newMessage.classList.add('message-output')
         } else {
-            newMessage.classList.add('inputMessage')
+            newMessage.classList.add('message-input')
         }
         if (this.msg.message.length > 15) {
             this.msg.message = '<br>' + this.msg.message //добавить перенос строки если сообщение длинное
@@ -50,7 +77,7 @@ export class Message {
         newMessage.innerHTML = '<p class="message__text">'+
             this.msg.user + ':  ' +
             this.msg.message + '</p>' +
-            '<p class="dateOnMessage">' + 
+            '<p class="date-on-message">' + 
             this.date.toTimeString().slice(0,5) +
             '</p>';
         chat.append(newMessage);

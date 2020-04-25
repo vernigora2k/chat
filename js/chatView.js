@@ -69,13 +69,14 @@ export class Message {
             newMessage.classList.add('message-output')
         } else {
             newMessage.classList.add('message-input')
+            this.sender = this.msg.chatname
         }
         if (this.msg.message.length > 15) {
             this.msg.message = '<br>' + this.msg.message //добавить перенос строки если сообщение длинное
         }
     
         newMessage.innerHTML = '<p class="message__text">'+
-            this.msg.user + ':  ' +
+            this.sender + ':  ' +
             this.msg.message + '</p>' +
             '<p class="date-on-message">' + 
             this.date.toTimeString().slice(0,5) +

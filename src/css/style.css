@@ -329,7 +329,7 @@ body {
         margin-top: 106px;  
     }
 
-        .popup-settings-header {
+        .popup-settings__header {
             display: flex;
             justify-content: space-between;
             width: 246px;
@@ -362,7 +362,7 @@ body {
                     padding: 0px;
                 }
 
-            .popup-change-chatname {
+            .popup-settings__change-chatname {
                 margin-left: 14px;
                 margin-top: 0px;
             }

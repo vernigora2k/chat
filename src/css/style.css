@@ -42,7 +42,9 @@ body {
 .main-screen__settings-area {
     margin: 8px;
 }
-  
+.settings-form {
+    justify-content: space-between;
+}
     .settings-btn {
         width: 98px;
         height: 32px;

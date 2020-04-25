@@ -29,16 +29,6 @@ body {
     display: none;
 }
 
-.main-screen__chatname-input {
-    width: 304px;
-    height: 32px;
-    margin-top: 8px;
-    margin-left: 8px;
-    padding-left: 8px;
-    border: 1px solid #000000;
-    color: #7C7C7C;
-}
-
 .main-screen__settings-area {
     margin: 8px;
 }

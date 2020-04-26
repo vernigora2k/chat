@@ -33,6 +33,12 @@ createAccountBtn.addEventListener('click', () => {
 //TODO: сделать валидацию логина и пароля
     createAccount(createAccountLoginInput.value,
                   createAccountPasswordInput.value)
+        .then(data => {
+            if (data) {
+                console.log(`Ваш аккаунт ${data.user.username} зарегистрирован! Ваш токен: ${data.user._id}`)
+            }
+        })
+        .catch(alert)
 })
 
 autorizationBtn.addEventListener('click', () => {

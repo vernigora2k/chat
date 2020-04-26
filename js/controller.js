@@ -5,7 +5,7 @@ import {popupCreateAccount, popupAutorization} from './UiElements.js';
 
 //document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
 //document.cookie = "cookieUserToken=SomeToken";
-const checkAutorizationToken = new function(){
+ export function checkAutorizationToken(){
     if (Cookies.get('cookieUserToken')) {
         popupCreateAccount.classList.add('hidden')
         popupAutorization.classList.add('hidden')
@@ -36,9 +36,9 @@ export function autorization(username, password) {
         body: JSON.stringify(payload)
     }
 
-    apiRequest(url, config)
+    return apiRequest(url, config)
         .then(data => {
-            Cookies.set('cookieUserToken', data, { expires: 7, path: '/' })
+            Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/' })
         })
         .catch(alert);      
 }

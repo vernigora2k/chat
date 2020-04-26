@@ -25,22 +25,3 @@ export function createAccount(username, password) {
         .catch(alert)  
 }
 
-
-
-// const payload = {
-//     username: 'vernigora1',
-//     password: 1111
-// }
-// const config = {
-//     method: 'post',
-//     headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(payload)
-// }
-
-// fetch('https://chatserver-271205.appspot.com/api/user', config)
-//   .then(response => {if (response.json().status = '200') {alert('status 200')}})
-//   .catch(error => alert('alert I am' + error));
-

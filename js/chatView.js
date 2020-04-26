@@ -1,5 +1,5 @@
 import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings, createAccountBtn, createAccountLoginInput, createAccountPasswordInput, toPopupAutorizationBtn, popupCreateAccount, toPopupCreateAccountBtn, autorizationBtn, autorizationLoginInput, autorizationPasswordInput, settingsCloseCrossBtn} from './UiElements.js';
-import {sendMessage, changeChatName, autorization} from './controller.js';
+import {sendMessage, changeChatName, autorization, checkAutorizationToken} from './controller.js';
 import {isMessageValid} from './validation.js';
 import {createAccount} from './apiClient.js';
 
@@ -43,7 +43,9 @@ createAccountBtn.addEventListener('click', () => {
 
 autorizationBtn.addEventListener('click', () => {
     autorization(autorizationLoginInput.value,
-                 autorizationPasswordInput.value)
+                 autorizationPasswordInput.value)  
+                 .then(data => {console.log(data.message)})
+    checkAutorizationToken()
 } )
 
 toPopupAutorizationBtn.addEventListener('click', () => {

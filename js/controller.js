@@ -3,8 +3,6 @@ import {Message} from './chatView.js';
 import {apiRequest} from './apiClient.js';
 import {popupCreateAccount, popupAutorization} from './UiElements.js';
 
-//document.cookie = "cookieUserToken=SomeToken; path=/; max-age=-1"
-//document.cookie = "cookieUserToken=SomeToken";
  export function checkAutorizationToken(){
     if (Cookies.get('cookieUserToken')) {
         popupCreateAccount.classList.add('hidden')
@@ -49,13 +47,13 @@ export function changeChatName(newChatName) {
     const config = {
         method: 'PATCH',
         headers: {
-            'Authorization': 'Bearer token'
+            'Authorization': `Bearer ${Cookies.get('cookieUserToken')}`
         },
         body: JSON.stringify(payload)
     }
 
-    apiRequest(url, config)
-        .then(data => console.log(data))
-        .catch(error => alert(error));
+    return apiRequest(url, config)
+        .then()
+        .catch(alert);
         
 }

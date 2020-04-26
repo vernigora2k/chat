@@ -37,9 +37,7 @@ export function autorization(username, password) {
     }
 
     return apiRequest(url, config)
-        .then(data => {
-            Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/' })
-        })
+        .then()
         .catch(alert);      
 }
 

@@ -35,7 +35,7 @@ createAccountBtn.addEventListener('click', () => {
                   createAccountPasswordInput.value)
         .then(data => {
             if (data) {
-                console.log(`Ваш аккаунт ${data.user.username} зарегистрирован! Ваш токен: ${data.user._id}`)
+                console.log(`Ваш аккаунт ${data.user.username} зарегистрирован! Ваш ID: ${data.user._id}`)
             }
         })
         .catch(alert)
@@ -44,7 +44,11 @@ createAccountBtn.addEventListener('click', () => {
 autorizationBtn.addEventListener('click', () => {
     autorization(autorizationLoginInput.value,
                  autorizationPasswordInput.value)  
-                 .then(data => {console.log(data.message)})
+                 .then(data => {
+                    Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/' })
+                    console.log(data)
+                    chatnameInput.value = data.msg.chatname
+                    })
     checkAutorizationToken()
 } )
 
@@ -54,7 +58,6 @@ toPopupAutorizationBtn.addEventListener('click', () => {
 })
 
 toPopupCreateAccountBtn.addEventListener('click', () => {
-    console.log('click')
     popupAutorization.classList.add('hidden')
     popupCreateAccount.classList.remove('hidden')
 })

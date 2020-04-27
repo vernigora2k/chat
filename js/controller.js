@@ -3,7 +3,7 @@ import {Message} from './chatView.js';
 import {apiRequest} from './apiClient.js';
 import {popupCreateAccount, popupAutorization, chatnameInput} from './UiElements.js';
 
- export function checkAutorizationToken(){
+export function checkAutorizationToken(){
     if (Cookies.get('cookieUserToken')) {
         popupCreateAccount.classList.add('hidden')
         popupAutorization.classList.add('hidden')

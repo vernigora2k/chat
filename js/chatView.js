@@ -50,8 +50,9 @@ autorizationBtn.addEventListener('click', () => {
                     Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/' })
                     localStorage.setItem('chatname', data.msg.chatname)
                     chatnameInput.value = data.msg.chatname
+                    checkAutorizationToken()
                     })
-    checkAutorizationToken()
+    
 } )
 
 toPopupAutorizationBtn.addEventListener('click', () => {

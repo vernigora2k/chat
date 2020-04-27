@@ -10,8 +10,6 @@ sendBtn.addEventListener('click', () => {
         }
         if (isMessageValid(msg)) {
             sendMessage(msg);
-            let outputMessage = new Message(msg, 'output');
-            outputMessage.createAndAddMessageInChat();
         }
 ;})
 

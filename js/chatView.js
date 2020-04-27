@@ -20,11 +20,13 @@ settingsBtn.addEventListener('click', () => {
 chatnameUpdateBtn.addEventListener('click', () => {
     changeChatName(chatnameInput.value)
         .then(console.log) 
-        .catch(alert)   
+        .catch(alert)  
+    localStorage.setItem('chatname', chatnameInput.value) 
 })
 
 logoutBtn.addEventListener('click', () => {
     Cookies.remove('cookieUserToken')
+    localStorage.removeItem('chatname')
     popupAutorization.classList.remove('hidden')
     document.location.reload(true)
 })
@@ -46,6 +48,7 @@ autorizationBtn.addEventListener('click', () => {
                  autorizationPasswordInput.value)  
                  .then(data => {
                     Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/' })
+                    localStorage.setItem('chatname', data.msg.chatname)
                     chatnameInput.value = data.msg.chatname
                     })
     checkAutorizationToken()

@@ -1,12 +1,18 @@
 import {socket} from './client.js';
 import {Message} from './chatView.js';
 import {apiRequest} from './apiClient.js';
-import {popupCreateAccount, popupAutorization} from './UiElements.js';
+import {popupCreateAccount, popupAutorization, chatnameInput} from './UiElements.js';
 
  export function checkAutorizationToken(){
     if (Cookies.get('cookieUserToken')) {
         popupCreateAccount.classList.add('hidden')
         popupAutorization.classList.add('hidden')
+    }
+}
+
+export function checkChatname() {
+    if (Cookies.get('cookieUserToken')) {
+        chatnameInput.value = localStorage.getItem('chatname')
     }
 }
 

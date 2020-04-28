@@ -19,9 +19,12 @@ settingsBtn.addEventListener('click', () => {
 
 chatnameUpdateBtn.addEventListener('click', () => {
     changeChatName(chatnameInput.value)
-        .then(console.log) 
+        .then(data => {
+              console.log('это попадает в then: code ' + data.code + ' ' + data.error)
+              localStorage.setItem('chatname', chatnameInput.value) 
+        }) 
         .catch(alert)  
-    localStorage.setItem('chatname', chatnameInput.value) 
+    
 })
 
 logoutBtn.addEventListener('click', () => {
@@ -47,7 +50,8 @@ autorizationBtn.addEventListener('click', () => {
     autorization(autorizationLoginInput.value,
                  autorizationPasswordInput.value)  
                  .then(data => {
-                    Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/' })
+                      console.log(data)
+                    Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/'})
                     localStorage.setItem('chatname', data.msg.chatname)
                     chatnameInput.value = data.msg.chatname
                     checkAutorizationToken()

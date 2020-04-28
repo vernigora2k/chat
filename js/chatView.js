@@ -52,8 +52,8 @@ autorizationBtn.addEventListener('click', () => {
                  .then(data => {
                       console.log(data)
                     Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/'})
-                    localStorage.setItem('chatname', data.msg.chatname)
-                    chatnameInput.value = data.msg.chatname
+                    localStorage.setItem('chatname', data.chatname)
+                    chatnameInput.value = data.chatname
                     checkAutorizationToken()
                     })
     

@@ -79,12 +79,14 @@ export class Message {
         this.date = new Date()
         this.sender = this.msg.user
         this.inputOrOutput = inputOrOutput
+        this.messageId = msg.messageId
     }
     createAndAddMessageInChat() {
         let newMessage = document.createElement('div')
 
         if (this.inputOrOutput == 'output') {
             newMessage.classList.add('message-output')
+            newMessage.setAttribute('id', this.messageId)
         } else {
             newMessage.classList.add('message-input')
             this.sender = this.msg.chatname

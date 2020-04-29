@@ -24,7 +24,8 @@ socket.on('message', function(msg){
     // let inputMessageFromServer = new Message(msg, 'input');
     // inputMessageFromServer.createAndAddMessageInChat();
     checkAndUpdateMessageStatus(msg)
-        .then(markingDeliveredStatusOnMessage())
+        .then(msg => markingDeliveredStatusOnMessage(msg))
+        .then(msg => localStorage.removeItem(msg.messageId))
 });
 
 export function autorization(username, password) {
@@ -83,11 +84,16 @@ function checkAndUpdateMessageStatus(msg) {
         if (localStorage.getItem(msg.messageId)) {
             console.log('they are!')
             localStorage.setItem(msg.messageId, 'delivered')
-            resolve()
+            resolve(msg)
         }
     })
 }
 
-function markingDeliveredStatusOnMessage() {
+function markingDeliveredStatusOnMessage(msg) {
     console.log('marking status changed')
+    console.log(msg.messageId)
+    let uiElementMessageOnChat = document.getElementById(msg.messageId)
+    console.log(uiElementMessageOnChat)
+    uiElementMessageOnChat.style.backgroundColor = '#d7ffed'
+    return msg
 }

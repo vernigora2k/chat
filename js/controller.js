@@ -21,8 +21,6 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    // let inputMessageFromServer = new Message(msg, 'input');
-    // inputMessageFromServer.createAndAddMessageInChat();
     checkAndUpdateMessageStatus(msg)
         .then(msg => markingDeliveredStatusOnMessage(msg))
         .then(msg => localStorage.removeItem(msg.messageId))
@@ -78,11 +76,7 @@ getMessageId.counter = 0
 function checkAndUpdateMessageStatus(msg) {
     return new Promise(
         function(resolve) {
-        console.log(msg)
-        console.log(msg.messageId)
-        console.log(localStorage.getItem(msg.messageId))
         if (localStorage.getItem(msg.messageId)) {
-            console.log('they are!')
             localStorage.setItem(msg.messageId, 'delivered')
             resolve(msg)
         }
@@ -90,10 +84,7 @@ function checkAndUpdateMessageStatus(msg) {
 }
 
 function markingDeliveredStatusOnMessage(msg) {
-    console.log('marking status changed')
-    console.log(msg.messageId)
     let uiElementMessageOnChat = document.getElementById(msg.messageId)
-    console.log(uiElementMessageOnChat)
     uiElementMessageOnChat.style.backgroundColor = '#d7ffed'
     return msg
 }

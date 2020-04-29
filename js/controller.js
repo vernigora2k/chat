@@ -84,7 +84,7 @@ function checkAndUpdateMessageStatus(msg) {
 }
 
 function markingDeliveredStatusOnMessage(msg) {
-    let uiElementMessageOnChat = document.getElementById(msg.messageId)
+    const uiElementMessageOnChat = document.getElementById(msg.messageId)
     uiElementMessageOnChat.style.backgroundColor = '#d7ffed'
     return msg
 }

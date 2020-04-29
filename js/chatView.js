@@ -1,15 +1,18 @@
 import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings, createAccountBtn, createAccountLoginInput, createAccountPasswordInput, toPopupAutorizationBtn, popupCreateAccount, toPopupCreateAccountBtn, autorizationBtn, autorizationLoginInput, autorizationPasswordInput, settingsCloseCrossBtn} from './UiElements.js';
-import {sendMessage, changeChatName, autorization, checkAutorizationToken} from './controller.js';
+import {sendMessage, changeChatName, autorization, checkAutorizationToken, getMessageId} from './controller.js';
 import {isMessageValid} from './validation.js';
 import {createAccount} from './apiClient.js';
 
 sendBtn.addEventListener('click', () => {
             const msg = {
             user: chatnameInput.value,
-            message: messageInput.value
+            message: messageInput.value,
+            messageId: getMessageId(),
         }
         if (isMessageValid(msg)) {
             sendMessage(msg);
+            let outputMessageFromServer = new Message(msg, 'output');
+            outputMessageFromServer.createAndAddMessageInChat();
         }
 ;})
 
@@ -19,12 +22,8 @@ settingsBtn.addEventListener('click', () => {
 
 chatnameUpdateBtn.addEventListener('click', () => {
     changeChatName(chatnameInput.value)
-        .then(data => {
-              console.log('это попадает в then: code ' + data.code + ' ' + data.error)
-              localStorage.setItem('chatname', chatnameInput.value) 
-        }) 
+        .then(localStorage.setItem('chatname', chatnameInput.value)) 
         .catch(alert)  
-    
 })
 
 logoutBtn.addEventListener('click', () => {
@@ -52,6 +51,7 @@ autorizationBtn.addEventListener('click', () => {
                  .then(data => {
                       console.log(data)
                     Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/'})
+                    localStorage.setItem('username', data.username)
                     localStorage.setItem('chatname', data.chatname)
                     chatnameInput.value = data.chatname
                     checkAutorizationToken()

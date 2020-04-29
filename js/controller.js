@@ -21,8 +21,9 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    let inputMessageFromServer = new Message(msg, 'input');
-    inputMessageFromServer.createAndAddMessageInChat();
+    // let inputMessageFromServer = new Message(msg, 'input');
+    // inputMessageFromServer.createAndAddMessageInChat();
+    checkAndUpdateMessageStatus(msg)
 });
 
 export function autorization(username, password) {
@@ -53,7 +54,8 @@ export function changeChatName(newChatName) {
     const config = {
         method: 'PATCH',
         headers: {
-            'Authorization': `Bearer ${Cookies.get('cookieUserToken')}`
+            'Authorization': `Bearer ${Cookies.get('cookieUserToken')}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
     }
@@ -61,5 +63,23 @@ export function changeChatName(newChatName) {
     return apiRequest(url, config)
         .then()
         .catch(alert);
-        
 }
+
+export function getMessageId(){
+    getMessageId.counter++
+    let messageId = localStorage.getItem('username')+getMessageId.counter
+    localStorage.setItem(messageId, 'sended')
+    return (messageId)
+}
+getMessageId.counter = 0
+
+function checkAndUpdateMessageStatus(msg) {
+    console.log(msg)
+    console.log(msg.messageId)
+    console.log(localStorage.getItem(msg.messageId))
+    if (localStorage.getItem(msg.messageId)) {
+        console.log('they are!')
+        localStorage.setItem(msg.messageId, 'delivered')
+    }
+}
+

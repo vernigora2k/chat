@@ -24,6 +24,7 @@ socket.on('message', function(msg){
     // let inputMessageFromServer = new Message(msg, 'input');
     // inputMessageFromServer.createAndAddMessageInChat();
     checkAndUpdateMessageStatus(msg)
+        .then(markingDeliveredStatusOnMessage())
 });
 
 export function autorization(username, password) {
@@ -74,12 +75,19 @@ export function getMessageId(){
 getMessageId.counter = 0
 
 function checkAndUpdateMessageStatus(msg) {
-    console.log(msg)
-    console.log(msg.messageId)
-    console.log(localStorage.getItem(msg.messageId))
-    if (localStorage.getItem(msg.messageId)) {
-        console.log('they are!')
-        localStorage.setItem(msg.messageId, 'delivered')
-    }
+    return new Promise(
+        function(resolve) {
+        console.log(msg)
+        console.log(msg.messageId)
+        console.log(localStorage.getItem(msg.messageId))
+        if (localStorage.getItem(msg.messageId)) {
+            console.log('they are!')
+            localStorage.setItem(msg.messageId, 'delivered')
+            resolve()
+        }
+    })
 }
 
+function markingDeliveredStatusOnMessage() {
+    console.log('marking status changed')
+}

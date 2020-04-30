@@ -76,3 +76,18 @@ function checkAndUpdateInputMessageStatus(msg) {
         uiElementMessageOutput.classList.add('delivered')
     }
 }
+
+export function loadLastMessageFromDB() {
+    const url = 'api/messages'
+    const config = {
+        method: 'get',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    }
+
+    return apiRequest(url, config)
+        .then()
+        .catch(alert);
+}

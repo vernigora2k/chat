@@ -77,3 +77,8 @@ function checkAndUpdateInputMessageStatus(msg) {
     }
 }
 
+function markingDeliveredStatusOnMessage(msg) {
+    const uiElementMessageOnChat = document.getElementById(msg.messageId)
+    uiElementMessageOnChat.style.backgroundColor = '#d7ffed'
+    return msg
+}

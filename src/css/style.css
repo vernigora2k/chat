@@ -83,6 +83,7 @@ body {
         margin-bottom: 8px;
         text-align: right;
         background-color: #f7f7f7;
+        transition: 1s linear;
     }
 
         .message__text {
@@ -102,8 +103,11 @@ body {
         font-size: 14px;
         line-height: 16px;
         color: #333333;
-        
     }
+
+.delivered {
+    background-color: #d7ffed;
+}
 
 .main-screen__message-area {
     margin: 8px;

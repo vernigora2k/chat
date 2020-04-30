@@ -49,7 +49,6 @@ autorizationBtn.addEventListener('click', () => {
     autorization(autorizationLoginInput.value,
                  autorizationPasswordInput.value)  
                  .then(data => {
-                      console.log(data)
                     Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/'})
                     localStorage.setItem('username', data.username)
                     localStorage.setItem('chatname', data.chatname)
@@ -79,12 +78,15 @@ export class Message {
         this.date = new Date()
         this.sender = this.msg.user
         this.inputOrOutput = inputOrOutput
+        this.messageId = this.msg.messageId
     }
     createAndAddMessageInChat() {
         let newMessage = document.createElement('div')
 
         if (this.inputOrOutput == 'output') {
             newMessage.classList.add('message-output')
+            newMessage.classList.add('sended')
+            newMessage.setAttribute('id', this.messageId)
         } else {
             newMessage.classList.add('message-input')
             this.sender = this.msg.chatname

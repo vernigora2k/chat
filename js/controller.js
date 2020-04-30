@@ -1,5 +1,4 @@
 import {socket} from './client.js';
-import {Message} from './chatView.js';
 import {apiRequest} from './apiClient.js';
 import {popupCreateAccount, popupAutorization, chatnameInput} from './UiElements.js';
 
@@ -21,9 +20,7 @@ export function sendMessage(msg) {
 }
 
 socket.on('message', function(msg){
-    // let inputMessageFromServer = new Message(msg, 'input');
-    // inputMessageFromServer.createAndAddMessageInChat();
-    checkAndUpdateMessageStatus(msg)
+    checkAndUpdateInputMessageStatus(msg)
 });
 
 export function autorization(username, password) {
@@ -68,18 +65,15 @@ export function changeChatName(newChatName) {
 export function getMessageId(){
     getMessageId.counter++
     let messageId = localStorage.getItem('username')+getMessageId.counter
-    localStorage.setItem(messageId, 'sended')
     return (messageId)
 }
 getMessageId.counter = 0
 
-function checkAndUpdateMessageStatus(msg) {
-    console.log(msg)
-    console.log(msg.messageId)
-    console.log(localStorage.getItem(msg.messageId))
-    if (localStorage.getItem(msg.messageId)) {
-        console.log('they are!')
-        localStorage.setItem(msg.messageId, 'delivered')
+function checkAndUpdateInputMessageStatus(msg) {
+    const uiElementMessageOutput = document.getElementById(msg.messageId)
+    if (msg.messageId === uiElementMessageOutput.id) {
+        uiElementMessageOutput.classList.remove('sended')
+        uiElementMessageOutput.classList.add('delivered')
     }
 }
 

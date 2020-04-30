@@ -76,9 +76,3 @@ function checkAndUpdateInputMessageStatus(msg) {
         uiElementMessageOutput.classList.add('delivered')
     }
 }
-
-function markingDeliveredStatusOnMessage(msg) {
-    const uiElementMessageOnChat = document.getElementById(msg.messageId)
-    uiElementMessageOnChat.style.backgroundColor = '#d7ffed'
-    return msg
-}

@@ -57,7 +57,8 @@ body {
     height: 437px;
     margin: 8px;
     border: 1px solid #000000;
-    contain: paint; 
+    /*TODO: это было раньше== contain: paint;  */
+    overflow: auto;
 }
 
     .message-input {

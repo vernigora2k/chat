@@ -3,14 +3,14 @@ import {apiRequest} from './apiClient.js';
 import {popupCreateAccount, popupAutorization, chatnameInput} from './UiElements.js';
 
 export function checkAutorizationToken(){
-    if (Cookies.get('cookieUserToken')) {
+    if (Cookies.get('at')) {
         popupCreateAccount.classList.add('hidden')
         popupAutorization.classList.add('hidden')
     }
 }
 
 export function checkChatname() {
-    if (Cookies.get('cookieUserToken')) {
+    if (Cookies.get('at')) {
         chatnameInput.value = localStorage.getItem('chatname')
     }
 }
@@ -51,7 +51,7 @@ export function changeChatName(newChatName) {
     const config = {
         method: 'PATCH',
         headers: {
-            'Authorization': `Bearer ${Cookies.get('cookieUserToken')}`,
+            'Authorization': `Bearer ${Cookies.get('at')}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
@@ -71,6 +71,7 @@ getMessageId.counter = 0
 
 function checkAndUpdateInputMessageStatus(msg) {
     const uiElementMessageOutput = document.getElementById(msg.messageId)
+    console.log('Testing socket.on message')
     if (msg.messageId === uiElementMessageOutput.id) {
         uiElementMessageOutput.classList.remove('sended')
         uiElementMessageOutput.classList.add('delivered')

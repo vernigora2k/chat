@@ -1,5 +1,5 @@
 import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings, createAccountBtn, createAccountLoginInput, createAccountPasswordInput, toPopupAutorizationBtn, popupCreateAccount, toPopupCreateAccountBtn, autorizationBtn, autorizationLoginInput, autorizationPasswordInput, settingsCloseCrossBtn} from './UiElements.js';
-import {sendMessage, changeChatName, autorization, checkAutorizationToken, getMessageId} from './controller.js';
+import {sendMessage, changeChatName, autorization, checkAutorizationToken, getMessageId, loadLastMessageFromDB} from './controller.js';
 import {isMessageValid} from './validation.js';
 import {createAccount} from './apiClient.js';
 
@@ -27,7 +27,7 @@ chatnameUpdateBtn.addEventListener('click', () => {
 })
 
 logoutBtn.addEventListener('click', () => {
-    Cookies.remove('cookieUserToken')
+    Cookies.remove('at')
     localStorage.removeItem('chatname')
     popupAutorization.classList.remove('hidden')
     document.location.reload(true)
@@ -49,11 +49,14 @@ autorizationBtn.addEventListener('click', () => {
     autorization(autorizationLoginInput.value,
                  autorizationPasswordInput.value)  
                  .then(data => {
-                    Cookies.set('cookieUserToken', data.token, { expires: 7, path: '/'})
+                    Cookies.set('at', data.token, { expires: 7, path: '/'})
                     localStorage.setItem('username', data.username)
                     localStorage.setItem('chatname', data.chatname)
                     chatnameInput.value = data.chatname
                     checkAutorizationToken()
+                    loadLastMessageFromDB()
+                        .then(document.location.reload(true))
+                        .catch(alert)
                     })
     
 } )
@@ -106,3 +109,13 @@ export class Message {
     }
 }
 
+
+// function scroolM() {
+//     console.log(chat)
+//     let windowRelativeTop = document.documentElement.getBoundingClientRect().top
+//     console.log(windowRelativeTop)
+//     if (windowRelativeTop < document.documentElement.clientHeight) {
+//         chat.innerHTML = '<p>I AM realy new Elem</p>'
+//     }
+// }
+// scroolM()

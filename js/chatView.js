@@ -55,7 +55,10 @@ autorizationBtn.addEventListener('click', () => {
                     chatnameInput.value = data.chatname
                     checkAutorizationToken()
                     loadLastMessageFromDB()
-                        .then(document.location.reload(true))
+                        .then(data => {
+                            console.log(data)
+                            document.location.reload(true)
+                        })
                         .catch(alert)
                     })
     

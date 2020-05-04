@@ -51,7 +51,7 @@ body {
 
 .main-screen__chat {
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: baseline;
     flex-wrap: nowrap;
     width: 304px;
     height: 437px;

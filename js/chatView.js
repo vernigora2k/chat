@@ -13,6 +13,7 @@ sendBtn.addEventListener('click', () => {
             sendMessage(msg);
             let outputMessageFromServer = new Message(msg, 'output');
             outputMessageFromServer.createAndAddMessageInChat();
+            chat.scrollTop = 9999
         }
 ;})
 

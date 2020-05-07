@@ -113,13 +113,3 @@ export class Message {
     }
 }
 
-
-// function scroolM() {
-//     console.log(chat)
-//     let windowRelativeTop = document.documentElement.getBoundingClientRect().top
-//     console.log(windowRelativeTop)
-//     if (windowRelativeTop < document.documentElement.clientHeight) {
-//         chat.innerHTML = '<p>I AM realy new Elem</p>'
-//     }
-// }
-// scroolM()

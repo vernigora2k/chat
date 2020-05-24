@@ -78,7 +78,7 @@ function checkAndUpdateInputMessageStatus(msg) {
     }
 }
 
-export function loadHistoryMessageFromDB(numbersOfMessages = 0) {
+export function getMessages(numbersOfMessages = 0) {
     const url = `api/messages?offset=${numbersOfMessages}`
     const config = {
         method: 'get',

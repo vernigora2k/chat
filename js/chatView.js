@@ -1,5 +1,5 @@
 import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings, createAccountBtn, createAccountLoginInput, createAccountPasswordInput, toPopupAutorizationBtn, popupCreateAccount, toPopupCreateAccountBtn, autorizationBtn, autorizationLoginInput, autorizationPasswordInput, settingsCloseCrossBtn} from './UiElements.js';
-import {sendMessage, changeChatName, autorization, checkAutorizationToken, getMessageId, loadHistoryMessageFromDB} from './controller.js';
+import {sendMessage, changeChatName, autorization, checkAutorizationToken, getMessageId, getMessages} from './controller.js';
 import {isMessageValid} from './validation.js';
 import {createAccount} from './apiClient.js';
 
@@ -59,11 +59,8 @@ autorizationBtn.addEventListener('click', () => {
                     })
 } )
 
-autorizationBtn.addEventListener('click', () => {
-     console.log('I am new LIstener')
-})
 
-loadHistoryMessageFromDB()
+getMessages()
     .then(data => {
         console.log(data)
         data.messages.forEach(element => {
@@ -94,13 +91,14 @@ settingsCloseCrossBtn.addEventListener('click', () => {
     popupSettings.classList.add('hidden')
 })
 
-// chat.addEventListener('scroll', () => {
-//     console.log('I am scrool' + chat.scrollTop + ' ' + chat.scrollHeight)
-//     if (!chat.scrollTop) {
-//         loadLastMessageFromDB()
-//             .then(console.log)
-//     }
-// })
+chat.numbersOfMessages = 0;
+chat.addEventListener('scroll', () => {
+    if (!chat.scrollTop) {
+        chat.numbersOfMessages += 10;
+        getMessages(chat.numbersOfMessages)
+            .then(console.log)
+    }
+})
 
 export class Message {
     constructor(msg, inputOrOutput) {

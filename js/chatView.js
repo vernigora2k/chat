@@ -62,9 +62,7 @@ autorizationBtn.addEventListener('click', () => {
 if (Cookies.get('at')){
     getMessages()
         .then(data => {
-            console.log(data)
             data.messages.forEach(element => {
-                console.log(element)
                 const msg = {
                     user: element.username,
                     message: element.message,
@@ -104,14 +102,11 @@ chat.addEventListener('scroll', () => {
         getMessages(chat.numbersOfMessages)
         .then(data => {
             data.messages.forEach(element => {
-                console.log(element)
                 const msg = {
                     user: element.chatname,
                     message: element.message,
                     messageId: element._id
                 }
-                console.log('chatname--- ', element.chatname)
-                console.log('username---', element.username)
                 let recentMessageFromServer
                 if (localStorage.getItem('username') == msg.user) {
                     recentMessageFromServer = new Message(msg, 'output');

@@ -71,7 +71,6 @@ getMessageId.counter = 0
 
 function checkAndUpdateInputMessageStatus(msg) {
     const uiElementMessageOutput = document.getElementById(msg.messageId)
-    console.log(uiElementMessageOutput)
     if (msg.messageId === uiElementMessageOutput.id) {
         uiElementMessageOutput.classList.remove('sended')
         uiElementMessageOutput.classList.add('delivered')

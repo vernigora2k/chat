@@ -71,17 +71,19 @@ getMessageId.counter = 0
 
 function checkAndUpdateInputMessageStatus(msg) {
     const uiElementMessageOutput = document.getElementById(msg.messageId)
+    console.log(uiElementMessageOutput)
     if (msg.messageId === uiElementMessageOutput.id) {
         uiElementMessageOutput.classList.remove('sended')
         uiElementMessageOutput.classList.add('delivered')
     }
 }
 
-export function loadLastMessageFromDB() {
-    const url = 'api/messages'
+export function loadHistoryMessageFromDB(numbersOfMessages = 0) {
+    const url = `api/messages?offset=${numbersOfMessages}`
     const config = {
         method: 'get',
         headers: {
+            'Authorization': `Bearer ${Cookies.get('at')}`,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },

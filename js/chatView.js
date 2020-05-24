@@ -1,5 +1,5 @@
 import {sendBtn, chat, chatnameInput, messageInput, chatnameUpdateBtn, logoutBtn, popupAutorization, settingsBtn, popupSettings, createAccountBtn, createAccountLoginInput, createAccountPasswordInput, toPopupAutorizationBtn, popupCreateAccount, toPopupCreateAccountBtn, autorizationBtn, autorizationLoginInput, autorizationPasswordInput, settingsCloseCrossBtn} from './UiElements.js';
-import {sendMessage, changeChatName, autorization, checkAutorizationToken, getMessageId, loadLastMessageFromDB} from './controller.js';
+import {sendMessage, changeChatName, autorization, checkAutorizationToken, getMessageId, loadHistoryMessageFromDB} from './controller.js';
 import {isMessageValid} from './validation.js';
 import {createAccount} from './apiClient.js';
 
@@ -13,7 +13,7 @@ sendBtn.addEventListener('click', () => {
             sendMessage(msg);
             let outputMessageFromServer = new Message(msg, 'output');
             outputMessageFromServer.createAndAddMessageInChat();
-            chat.scrollTop = chat.scrollHeight
+            chat.scrollTop = chat.scrollHeight;
         }
 ;})
 
@@ -55,15 +55,30 @@ autorizationBtn.addEventListener('click', () => {
                     localStorage.setItem('chatname', data.chatname)
                     chatnameInput.value = data.chatname
                     checkAutorizationToken()
-                    loadLastMessageFromDB()
-                        .then(data => {
-                            console.log(data)
-                            document.location.reload(true)
-                        })
-                        .catch(alert)
+                    document.location.reload(true)
                     })
-    
 } )
+
+autorizationBtn.addEventListener('click', () => {
+     console.log('I am new LIstener')
+})
+
+loadHistoryMessageFromDB()
+    .then(data => {
+        console.log(data)
+        data.messages.forEach(element => {
+            console.log(element)
+            const msg = {
+                user: element.username,
+                message: element.message,
+                messageId: element._id
+            }
+            let recentMessageFromServer = new Message(msg, 'output');
+            recentMessageFromServer.createAndAddMessageInChat('prepend');
+            chat.scrollTop = chat.scrollHeight;
+        });
+    })
+    .catch(alert)
 
 toPopupAutorizationBtn.addEventListener('click', () => {
     popupCreateAccount.classList.add('hidden')
@@ -79,6 +94,14 @@ settingsCloseCrossBtn.addEventListener('click', () => {
     popupSettings.classList.add('hidden')
 })
 
+// chat.addEventListener('scroll', () => {
+//     console.log('I am scrool' + chat.scrollTop + ' ' + chat.scrollHeight)
+//     if (!chat.scrollTop) {
+//         loadLastMessageFromDB()
+//             .then(console.log)
+//     }
+// })
+
 export class Message {
     constructor(msg, inputOrOutput) {
         this.msg = msg
@@ -87,7 +110,7 @@ export class Message {
         this.inputOrOutput = inputOrOutput
         this.messageId = this.msg.messageId
     }
-    createAndAddMessageInChat() {
+    createAndAddMessageInChat(addMethod='append') {
         let newMessage = document.createElement('div')
 
         if (this.inputOrOutput == 'output') {
@@ -108,7 +131,13 @@ export class Message {
             '<p class="date-on-message">' + 
             this.date.toTimeString().slice(0,5) +
             '</p>';
-        chat.append(newMessage);
+        if(addMethod == 'append'){
+            chat.append(newMessage)
+        } else {
+            newMessage.classList.remove('sended')
+            newMessage.classList.add('delivered')
+            chat.prepend(newMessage)
+        }
         messageInput.value = '';
     }
 }

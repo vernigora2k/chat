@@ -59,23 +59,29 @@ autorizationBtn.addEventListener('click', () => {
                     })
 } )
 
-
-getMessages()
-    .then(data => {
-        console.log(data)
-        data.messages.forEach(element => {
-            console.log(element)
-            const msg = {
-                user: element.username,
-                message: element.message,
-                messageId: element._id
-            }
-            let recentMessageFromServer = new Message(msg, 'output');
-            recentMessageFromServer.createAndAddMessageInChat('prepend');
-            chat.scrollTop = chat.scrollHeight;
-        });
-    })
-    .catch(alert)
+if (Cookies.get('at')){
+    getMessages()
+        .then(data => {
+            console.log(data)
+            data.messages.forEach(element => {
+                console.log(element)
+                const msg = {
+                    user: element.username,
+                    message: element.message,
+                    messageId: element._id
+                }
+                let recentMessageFromServer
+                if (localStorage.getItem('username') == msg.user) {
+                    recentMessageFromServer = new Message(msg, 'output');
+                } else {
+                    recentMessageFromServer = new Message(msg, 'input');
+                }
+                recentMessageFromServer.createAndAddMessageInChat('prepend');
+                chat.scrollTop = chat.scrollHeight;
+            });
+        })
+        .catch(alert)
+}
 
 toPopupAutorizationBtn.addEventListener('click', () => {
     popupCreateAccount.classList.add('hidden')
@@ -96,7 +102,26 @@ chat.addEventListener('scroll', () => {
     if (!chat.scrollTop) {
         chat.numbersOfMessages += 10;
         getMessages(chat.numbersOfMessages)
-            .then(console.log)
+        .then(data => {
+            data.messages.forEach(element => {
+                console.log(element)
+                const msg = {
+                    user: element.chatname,
+                    message: element.message,
+                    messageId: element._id
+                }
+                console.log('chatname--- ', element.chatname)
+                console.log('username---', element.username)
+                let recentMessageFromServer
+                if (localStorage.getItem('username') == msg.user) {
+                    recentMessageFromServer = new Message(msg, 'output');
+                } else {
+                    recentMessageFromServer = new Message(msg, 'input');
+                }
+                recentMessageFromServer.createAndAddMessageInChat('prepend');
+            });
+        })
+        .catch(alert)
     }
 })
 
@@ -117,7 +142,6 @@ export class Message {
             newMessage.setAttribute('id', this.messageId)
         } else {
             newMessage.classList.add('message-input')
-            this.sender = this.msg.chatname
         }
         if (this.msg.message.length > 15) {
             this.msg.message = '<br>' + this.msg.message //добавить перенос строки если сообщение длинное

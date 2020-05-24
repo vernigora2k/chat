@@ -21,6 +21,7 @@ export function sendMessage(msg) {
 
 socket.on('message', function(msg){
     checkAndUpdateInputMessageStatus(msg)
+    console.log(msg.username)
 });
 
 export function autorization(username, password) {
@@ -71,7 +72,7 @@ getMessageId.counter = 0
 
 function checkAndUpdateInputMessageStatus(msg) {
     const uiElementMessageOutput = document.getElementById(msg.messageId)
-    if (msg.messageId === uiElementMessageOutput.id) {
+    if (uiElementMessageOutput && uiElementMessageOutput.id == msg.messageId) {
         uiElementMessageOutput.classList.remove('sended')
         uiElementMessageOutput.classList.add('delivered')
     }

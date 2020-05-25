@@ -120,7 +120,7 @@ chat.addEventListener('scroll', () => {
     }
 })
 
-export class Message {
+export default class Message {
     constructor(msg, inputOrOutput) {
         this.msg = msg
         this.date = new Date()

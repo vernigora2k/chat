@@ -1,6 +1,7 @@
 import {socket} from './client.js';
 import {apiRequest} from './apiClient.js';
-import {popupCreateAccount, popupAutorization, chatnameInput} from './UiElements.js';
+import {popupCreateAccount, popupAutorization, chatnameInput, chat} from './UiElements.js';
+import Message from './chatView.js';
 
 export function checkAutorizationToken(){
     if (Cookies.get('at')) {
@@ -21,7 +22,22 @@ export function sendMessage(msg) {
 
 socket.on('message', function(msg){
     checkAndUpdateInputMessageStatus(msg)
-    console.log(msg.username)
+        .then()
+        .catch(    
+            data => {
+                const msg = {
+                    user: data.chatname,
+                    message: data.message,
+                    messageId: data.messageId,
+                }
+                console.log('message.chatname : ' + msg.user)
+                console.log('message.message: ' + msg.message)
+                console.log('message.id : ' + data.messageId)
+                let inputMessage = new Message(msg, 'input');
+                inputMessage.createAndAddMessageInChat('append'); 
+                chat.scrollTop = chat.scrollHeight;
+            }
+        )
 });
 
 export function autorization(username, password) {
@@ -71,11 +87,14 @@ export function getMessageId(){
 getMessageId.counter = 0
 
 function checkAndUpdateInputMessageStatus(msg) {
-    const uiElementMessageOutput = document.getElementById(msg.messageId)
-    if (uiElementMessageOutput && uiElementMessageOutput.id == msg.messageId) {
-        uiElementMessageOutput.classList.remove('sended')
-        uiElementMessageOutput.classList.add('delivered')
-    }
+    return new Promise((resolve, reject) => {
+        const uiElementMessageOutput = document.getElementById(msg.messageId)
+        if (uiElementMessageOutput && uiElementMessageOutput.id == msg.messageId) {
+                uiElementMessageOutput.classList.remove('sended')
+                uiElementMessageOutput.classList.add('delivered')
+                resolve('done')
+        } else reject(msg)
+    })
 }
 
 export function getMessages(numbersOfMessages = 0) {

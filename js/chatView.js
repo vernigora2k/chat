@@ -64,12 +64,12 @@ if (Cookies.get('at')){
         .then(data => {
             data.messages.forEach(element => {
                 const msg = {
-                    user: element.username,
+                    user: element.chatname,
                     message: element.message,
                     messageId: element._id
                 }
                 let recentMessageFromServer
-                if (localStorage.getItem('username') == msg.user) {
+                if (localStorage.getItem('username') == element.username) {
                     recentMessageFromServer = new Message(msg, 'output');
                 } else {
                     recentMessageFromServer = new Message(msg, 'input');

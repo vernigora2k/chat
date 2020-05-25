@@ -30,9 +30,6 @@ socket.on('message', function(msg){
                     message: data.message,
                     messageId: data.messageId,
                 }
-                console.log('message.chatname : ' + msg.user)
-                console.log('message.message: ' + msg.message)
-                console.log('message.id : ' + data.messageId)
                 let inputMessage = new Message(msg, 'input');
                 inputMessage.createAndAddMessageInChat('append'); 
                 chat.scrollTop = chat.scrollHeight;

@@ -137,18 +137,19 @@ export default class Message {
             newMessage.setAttribute('id', this.messageId)
         } else {
             newMessage.classList.add('message-input')
+            //TODO: посмотреть когда отправляются мои сообщения и не доходят ко мне через сокет = они должны оставатся серыми
+            newMessage.classList.add ('delivered') 
         }
         if (this.msg.message.length > 15) {
-            this.msg.message = '<br>' + this.msg.message //добавить перенос строки если сообщение длинное
+            this.msg.message = '<br>' + this.msg.message 
         }
-    
         newMessage.innerHTML = '<p class="message__text">'+
             this.sender + ':  ' +
             this.msg.message + '</p>' +
             '<p class="date-on-message">' + 
             this.date.toTimeString().slice(0,5) +
             '</p>';
-        if(addMethod == 'append'){
+        if (addMethod == 'append'){
             chat.append(newMessage)
         } else {
             newMessage.classList.remove('sended')
